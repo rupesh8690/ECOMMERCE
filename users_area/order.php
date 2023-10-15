@@ -59,13 +59,14 @@ else
 
 //inserting data to users_table
 
-$insert_orders="insert into `user_orders`(`user_id`, `amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`)
-                values($user_id,$subtotal,$invoice_number, $count_products,NOW(),'$status'";
-                //order status is varchar so it is inclosed inside single quote
+$insert_orders = "INSERT INTO `user_orders` (`user_id`, `amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`)
+                VALUES ('$user_id', '$subtotal', '$invoice_number', '$count_products', NOW(), '$status')";
+
+              
 $result_user_order=mysqli_query($conn,$insert_orders);
 if($result_user_order)
 {
-    echo"<script>alert('inserted successfully')</script>";
+    echo"<script>alert('inserted successfully ". $subtotal ."')</script>"; 
 
 }
 else
