@@ -22,10 +22,11 @@ if(isset($_GET['user_id']))
         $product_id=$row_price['product_id'];
         $select_products="select * from products where product_id=$product_id";
         $result_product=mysqli_query($conn,$select_products);
+        $product_price=$row_price['prodcut_price'];
         while($row_product_price=mysqli_fetch_array($result_product))
         {
-            $product_price=array($row_product_price['product_price']);
-            $product_arry_amt=array_sum($product_price);
+            $product_price_arr=array($row_product_price['product_price']);
+            $product_arry_amt=array_sum($product_price_arr);
             $total_price+=$product_arry_amt;
 
         }
@@ -66,7 +67,9 @@ $insert_orders = "INSERT INTO `user_orders` (`user_id`, `amount_due`, `invoice_n
 $result_user_order=mysqli_query($conn,$insert_orders);
 if($result_user_order)
 {
-    echo"<script>alert('inserted successfully ". $subtotal ."')</script>"; 
+    // echo"<script>alert('inserted successfully ". $get_ip_address ."')</script>"; 
+    echo "<script>alert('inserted successfully')</script>";
+    echo "<script>window.open('profile.php','_self') </script>";
 
 }
 else
@@ -74,6 +77,29 @@ else
     echo"<script>alert('Some problem occured')</script>";
 }
 
+//inseting to orders pending
+
+$insert_pending_order="INSERT INTO `orders_pending`( `user_id`, `invoice_number`, `product_id`, `quantity`, `order_status`) 
+             values('$user_id','$invoice_number','$product_id','$quantity','$status')";
+$result_pending_order=mysqli_query($conn,$insert_pending_order);
+
+
+//once the data is inserted to orders pending table we have to delete the cart
+
+
+$delete_cart_query="DELETE FROM `cart_details` where ip_address='$get_ip_address'";
+$result_cart_delete=mysqli_query($conn,$delete_cart_query);
+if($result_user_order)
+{
+    // echo"<script>alert('inserted successfully ". $subtotal ."')</script>"; 
+    echo "<script>alert('deleted successfully')</script>";
+    echo "<script>window.open('profile.php','_self') </script>";
+
+}
+else
+{
+    echo"<script>alert('Some problem occured')</script>";
+}
 
 
 ?>
