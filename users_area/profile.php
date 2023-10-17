@@ -149,15 +149,23 @@ cart();
 
 
 <!---fourth child---->
+
+
 <div class="row">
   <div class="col-md-2 ">
   <ul class="navbar-nav mb-1 text-center bg-secondary" style="height:100vh">
         <li class="item bg-info">
-          <a href="#" class="nav-item text-light "> <h4 class="text-center">Your  Profile</h4></a>
+          <a href="#" class="nav-item text-light text-decoration-none "> <h4 class="text-center">Your  Profile</h4></a>
         </li>
+        
+      
+
+    
 
         <li class="item ">
+       
          <img src="../image/apples.png" alt="user" class="profile_img my-4 m">
+
         </li>
 
         <li class="item ">
@@ -167,6 +175,9 @@ cart();
         <li class="item ">
           <a href="#" class="nav-item text-light text-decoration-none"> Edit Account</a>
         </li>
+        <!-- <li class="item ">
+          <a href="#" class="nav-item text-light text-decoration-none"> <?php echo $v ?></a>
+        </li> -->
 
         <li class="item ">
           <a href="#" class="nav-item text-light text-center text-decoration-none"> My orders</a>

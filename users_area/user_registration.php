@@ -28,6 +28,7 @@ include('../functions/common_function.php');
           "col-xl-6" specifies the column behavior for extra-large (xl) screens. 
             In this case, the element will occupy half of the available width in its parent container, taking up 6 out of 12 grid columns in a row. On extra-large screens, it will take up half of the container's width.
            ---->
+ 
 
            <form action="" method="post" enctype="multipart/form-data">
             <!---"multipart/form-data" is typically used when you want to submit files (e.g., images, documents) along with other form data.--->
@@ -88,74 +89,57 @@ include('../functions/common_function.php');
 </html>
 
 <?php
-//php code for insertion
 
 
+if (isset($_POST['register'])) {
+    $user_name = $_POST['user_name'];
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_password'];
+    $conf_user_password = $_POST['conf_user_password'];
+    $user_address = $_POST['user_address'];
+    $user_number = $_POST['user_number'];
+    $user_image = $_FILES['user_image']['name'];
+    $user_image_tmp = $_FILES['user_image']['tmp_name'];
 
-if(isset($_POST['register']))
-{
-    $user_name=$_POST['user_name'];
-    $user_email=$_POST['user_email'];
-    $user_image=$_FILES['user_image']['name'];
-    $user_image_temp=$_FILES['user_image']['temp_name'];
-    $user_password=$_POST['user_password'];
-    $hash_password=password_hash($user_password,PASSWORD_DEFAULT);
-    $conf_user_password=$_POST['conf_user_password'];
-    $user_address=$_POST['user_address'];
-    $user_number=$_POST['user_number'];
-    $user_ip=getIPAddress(); 
+    $user_ip = getIPAddress();
+    $hash_password = password_hash($user_password, PASSWORD_DEFAULT);
 
-    //checking whetheer user exist or not
+      //checking whetheer user exist or not
 
-    $select_query=" select * from `user_table` where username='$user_name' or user_email='$user_email'";
-    $result_retrieve_query=mysqli_query($conn,$select_query);
-    $rows_count=mysqli_num_rows($result_retrieve_query);
-    if($rows_count>0)
-    {
-        echo "<script>alert('Username and email  already Exist')</script>";
-        echo "<script>window.open('user_registration.php','_self')</script>";
-
-    }
-    // else if($user_password != $conf_user_password)
-
-    // {
-    //     echo "<script>alert('Password doesn't matched!')</script>";
-    //     echo "<script>window.open('user_registration.php','_self')</script>";
-          
-    // }
-    elseif ($user_password != $conf_user_password)
-{
-    echo "<script>alert('Password do not match!')</script>"; //doesn't (apostrophe was not working)
-    echo "<script>window.open('user_registration.php','_self')</script>";
-}
-
-    else{
-            move_uploaded_file($user_image_temp,"user_images/$user_image");
-            $register_query="insert into `user_table`( `username`, `user_email`, `user_password`, `user_image`, `user_ip`, `user_address`, `user_mobile`)
-            values('$user_name','$user_email','$hash_password','$user_image','$user_ip','$user_address','$user_number') ";
-        
-            $result_query=mysqli_query($conn,$register_query);
-        
-            if($result_query)
-            {
-                // echo "<script>alert('User Registered successfully " .  $rows_count_cart . "')</script>";
-
-                // echo "<script>alert('User Registered successfully ')</script>";
-        
-                // echo "<script>window.open('userlogin.php','_self')</script>";//_self means we want to open in same tab
-        
-            }
-            else{
-                echo "<script>alert('Problem')</script>";
-        
-        
-            }
-
-          
-
-    }
+      $select_query=" select * from `user_table` where username='$user_name' or user_email='$user_email'";
+      $result_retrieve_query=mysqli_query($conn,$select_query);
+      $rows_count=mysqli_num_rows($result_retrieve_query);
+      if($rows_count>0)
+      {
+          echo "<script>alert('Username and email  already Exist')</script>";
+          echo "<script>window.open('user_registration.php','_self')</script>";
   
-    //select cart items
+      }
+     
+      elseif ($user_password != $conf_user_password)
+     {
+      echo "<script>alert('Password do not match!')</script>"; //doesn't (apostrophe was not working)
+      echo "<script>window.open('user_registration.php','_self')</script>";
+      }
+  
+      else{
+
+        // Move the uploaded file to the specified directory
+        move_uploaded_file($user_image_tmp, "./user_images/$user_image");
+
+        $register_query = "INSERT INTO `user_table` (`username`, `user_email`, `user_password`, `user_image`, `user_ip`, `user_address`, `user_mobile`)
+                VALUES ('$user_name', '$user_email', '$hash_password', '$user_image', '$user_ip', '$user_address', '$user_number')";
+            $result_query = mysqli_query($conn, $register_query);
+
+            if ($result_query) {
+                echo "User registration successful.";
+            } else {
+                echo "Error inserting user data into the database.";
+            }
+        
+       
+        }
+           //select cart items
 
     $select_cart_items="select *from `cart_details` where ip_address='$user_ip'";
     $result_cart=mysqli_query($conn,$select_cart_items);
@@ -173,10 +157,5 @@ if(isset($_POST['register']))
         echo "<script>window.open('../index.php','_self')</script>";//_self means we want to open in same tab
 
     }
-
-
-
-}
-
-
+    }
 ?>
