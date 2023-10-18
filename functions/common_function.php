@@ -492,5 +492,44 @@ function total_cart_price()
 }
 
 
+function get_user_order_detail()
+{
+  global $conn;
+  $user_name=$_SESSION['username'];
+  $get_details="select *from user_table where username='$user_name'";
+  $result_query=mysqli_query($conn,$get_details);
+  while($row=mysqli_fetch_array($result_query))
+  {
+    $user_id=$row['user_id'];
+    if(!isset($_GET['edit_account']))
+    {
+      if(!isset($_GET['my_orders']))
+      {
+        if(!isset($_GET['delete_account']))
+        {
+          $get_orders="select *from user_orders where 
+          user_id=$user_id and order_status='pending'";
+          $result_order_query=mysqli_query($conn,$get_orders);
+          $row_count=mysqli_num_rows($result_order_query);
+          if($row_count>0)
+          {
+            echo "<h3 class='text-center mt-4 text-success'> You have <span class='text-danger'> $row_count </span> pending  orders  </h3>
+            <p class='text-center '> <a href='profile.php?my_orders' class='text-dark text-decoration-none'> Order Details </a> </p>";
+          }
+          else
+          {
+            echo "<h3 class='text-center mt-4 text-success'> You have <span class='text-danger'> $row_count </span> pending  orders  </h3>
+            <p class='text-center '> <a href='index.php' class='text-dark text-decoration-none'> Explore the products </a> </p>";
+
+          }
+
+        }
+      }
+
+    }
+
+  }
+  
+}
 
 ?>

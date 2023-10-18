@@ -187,14 +187,14 @@ cart();
         </li>
 
         <li class="item ">
-          <a href="profile.php" class="nav-item text-light text-decoration-none"> Edit Account</a>
+          <a href="profile.php?edit_account" class="nav-item text-light text-decoration-none"> Edit Account</a>
         </li>
         <!-- <li class="item ">
           <a href="#" class="nav-item text-light text-decoration-none"> <?php echo $user_name ?></a>
         </li> -->
 
         <li class="item ">
-          <a href="profile.php?my_order" class="nav-item text-light text-center text-decoration-none"> My orders</a>
+          <a href="profile.php?my_orders" class="nav-item text-light text-center text-decoration-none"> My orders</a>
         </li>
 
         <li class="item ">
@@ -211,6 +211,10 @@ cart();
   </div>
 
   <div class="col-md-10">
+    <?php
+    get_user_order_detail();
+
+    ?>
 
   </div>
 </div>

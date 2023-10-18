@@ -35,6 +35,13 @@ session_start();
           object-fit:contain;
 
         }
+
+        /* .background_image
+        {
+          background-image: url("image/nocart.jpg");
+          background-size: cover;
+          margin-bottom: 2em;
+        } */
         </style>
       
     
@@ -122,7 +129,7 @@ cart();
       }
       else{
         echo "   <li class='nav-item'>
-        <a class='nav-link' href='logout.php'>Logout</a>
+        <a class='nav-link' href='users_area/logout.php'>Logout</a>
       </li> ";
 
       }
@@ -146,7 +153,7 @@ cart();
 
 <!--creating cart table---->
 <div class="container">
-  <div class="row">
+  <div class="row vh-100 ">
     <form action="" method="post">
   <table class="table  table-bordered text-center">
  
