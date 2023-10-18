@@ -157,42 +157,54 @@ cart();
         <li class="item bg-info">
           <a href="#" class="nav-item text-light text-decoration-none "> <h4 class="text-center">Your  Profile</h4></a>
         </li>
-        
+        <?php
+  
+  
+
+        $user_name=$_SESSION['username'];
       
+        $select_query="select *from user_table where username='$user_name'";
+        $data=mysqli_query($conn,$select_query);
+        $row=mysqli_fetch_array($data);
+         $user_image=$row['user_image'];
+         echo "  <li class='item '>
+       
+         <img src='./user_images/$user_image' alt='user' class='profile_img my-4 m'>
+  
+        </li> ";
+
+       
+        
+        ?>
+    
 
     
 
-        <li class="item ">
        
-         <img src="../image/apples.png" alt="user" class="profile_img my-4 m">
 
+        <li class="item ">
+          <a href="profile.php" class="nav-item text-light text-decoration-none"> Pending Orders</a>
         </li>
 
         <li class="item ">
-          <a href="#" class="nav-item text-light text-decoration-none"> Pending Orders</a>
-        </li>
-
-        <li class="item ">
-          <a href="#" class="nav-item text-light text-decoration-none"> Edit Account</a>
+          <a href="profile.php" class="nav-item text-light text-decoration-none"> Edit Account</a>
         </li>
         <!-- <li class="item ">
-          <a href="#" class="nav-item text-light text-decoration-none"> <?php echo $v ?></a>
+          <a href="#" class="nav-item text-light text-decoration-none"> <?php echo $user_name ?></a>
         </li> -->
 
         <li class="item ">
-          <a href="#" class="nav-item text-light text-center text-decoration-none"> My orders</a>
+          <a href="profile.php?my_order" class="nav-item text-light text-center text-decoration-none"> My orders</a>
         </li>
 
         <li class="item ">
-          <a href="#" class="nav-item text-light text-decoration-none"> Delete Account</a>
+          <a href="profile.php?delete_account" class="nav-item text-light text-decoration-none"> Delete Account</a>
         </li>
 
-        <li class="item ">
-          <a href="#" class="nav-item text-light text-decoration-none"> Your  Profile</a>
-        </li>
+      
 
         <li class="item ">
-          <a href="#" class="nav-item text-light text-decoration-none"> Logout</a>
+          <a href="logout.php" class="nav-item text-light text-decoration-none"> Logout</a>
         </li>
     </ul>
       
