@@ -24,6 +24,12 @@ session_start();
 
     <!--custom css file link--->
        <link rel="stylesheet" href="styles.css">
+       <style>
+            body
+            {
+                overflow-x:hidden;
+            }
+            </style>
 
        
       
