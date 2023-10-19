@@ -37,6 +37,12 @@ session_start();
 
 
 }
+
+            body
+            {
+                overflow-x:hidden;
+            }
+        
       </style>
       
     
@@ -210,9 +216,13 @@ cart();
       
   </div>
 
-  <div class="col-md-10">
+  <div class="col-md-10 text-center">
     <?php
     get_user_order_detail();
+    if(isset($_GET['edit_account']))
+    {
+      include('edit_account.php');
+    }
 
     ?>
 
