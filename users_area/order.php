@@ -22,7 +22,7 @@ if(isset($_GET['user_id']))
         $product_id=$row_price['product_id'];
         $select_products="select * from products where product_id=$product_id";
         $result_product=mysqli_query($conn,$select_products);
-        $product_price=$row_price['prodcut_price'];
+        // $product_price=$row_price['prodcut_price'];
         while($row_product_price=mysqli_fetch_array($result_product))
         {
             $product_price_arr=array($row_product_price['product_price']);
@@ -47,7 +47,7 @@ $quantity=$get_item_quantity['quantity'];
 if($quantity==0)
 {
     $quantity=1;
-    $subtotal=$product_price;
+    $subtotal=$total_price;
 
 
 }
@@ -61,7 +61,7 @@ else
 //inserting data to users_table
 
 $insert_orders = "INSERT INTO `user_orders` (`user_id`, `amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`)
-                VALUES ('$user_id', '$subtotal', '$invoice_number', '$count_products', NOW(), '$status')";
+                VALUES ($user_id, $subtotal, $invoice_number, $count_products, NOW(), '$status')";
 
               
 $result_user_order=mysqli_query($conn,$insert_orders);
