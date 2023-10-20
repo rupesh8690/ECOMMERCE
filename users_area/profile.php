@@ -38,10 +38,9 @@ session_start();
 
 }
 
-            body
-            {
-                overflow-x:hidden;
-            }
+body
+{
+    overflow-x:hidden;}
         
       </style>
       
@@ -125,12 +124,12 @@ cart();
       if(!isset($_SESSION['username']))
       {
         echo "   <li class='nav-item'>
-        <a class='nav-link' href='users_area/userlogin.php'>Login</a>
+        <a class='nav-link' href='userlogin.php'>Login</a>
       </li> ";
       }
       else{
         echo "   <li class='nav-item'>
-        <a class='nav-link' href='users_area/logout.php'>Logout</a>
+        <a class='nav-link' href='logout.php'>Logout</a>
       </li> ";
 
       }
@@ -222,6 +221,10 @@ cart();
     if(isset($_GET['edit_account']))
     {
       include('edit_account.php');
+    }
+    if(isset($_GET['my_orders']))
+    {
+      include('my_orders.php');
     }
 
     ?>
