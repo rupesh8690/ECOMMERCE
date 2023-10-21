@@ -65,10 +65,28 @@ session_start();
       <li class="nav-item">
         <a class="nav-link" href="display_all.php">Products</a>
       </li>
+      <?php
+      if(!isset($_SESSION['username']))
+      {
+        echo " <li class='nav-item'>
+        <a class='nav-link' href='./users_area/user_registration.php'>Register</a>
+      </li>";
+      }
+      else
+      {
+       
+        echo " <li class='nav-item'>
+        <a class='nav-link' href='./users_area/profile.php'>My Account</a>
+      </li>";
 
+      }
+
+
+      ?>
+<!-- 
       <li class="nav-item">
         <a class="nav-link" href="./users_area/user_registration.php">Register</a>
-      </li>
+      </li> -->
 
       <li class="nav-item">
         <a class="nav-link" href="#">Contact</a>
