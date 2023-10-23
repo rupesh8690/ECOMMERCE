@@ -81,14 +81,32 @@ include('../includes/connect.php');
     </td>
     <td>true</td>
     <td><a href='index.php?edit_products=<?php echo $product_id ?> ' class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
-    <td><a href=' ' class='text-light'><i class='fa-solid fa-trash-can'></i></a></td>
+    <td>
+    <a href="#" class="text-light">
+        <i class="fa-solid fa-trash-can" onclick="confirmDelete(<?php echo $product_id; ?>)"></i>
+    </a>
+</td>
+
   </tr> 
   
 <?php
+
+
   }
 }
   ?>
   
+  <?php
+// Validation for deletion
+echo '<script>
+function confirmDelete(product_id) {
+    if (confirm("Are you sure you want to delete this product?")) {
+        window.location.href = "delete_product.php?product_id=" + product_id;
+    }
+}
+</script>';
+?>
+
 
    
  
