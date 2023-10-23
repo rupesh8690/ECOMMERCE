@@ -21,13 +21,20 @@
           object-fit: contain;
         }
 
-   .footer
+   /* .footer
    {
     position:absolute;
-    bottom:0;
+
+  
 
 
+   } */
+
+   body
+   {
+    overflow-x:hidden;
    }
+
     </style>
 </head>
 <body>
@@ -35,7 +42,7 @@
   <div class="container-fluid p-0">
 
   <!--first child--->
-  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <nav class="navbar navbar-expand-lg navbar-light bg-info ">
     <div class="container-fluid">
     <img src="../image/logo.png" alt="" class="logo">
 
@@ -70,7 +77,7 @@
        <!--button*10>a.nav-link.text-light.bg-info.my-1 --->
         <div class="button text-center ml-5 " >
             <button><a href="insert_product.php" class="nav-link text-light bg-info m-2 p-2">Insert Products</a></button>
-            <button><a href="" class="nav-link text-light bg-info m-2 p-2">View Products</a></button>
+            <button><a href="index.php?view_products" class="nav-link text-light bg-info m-2 p-2" >View Products</a></button>
             <button><a href="index.php?insert_category" class="nav-link text-light bg-info m-2 p-2">Insert Categories</a></button>
             <button><a href="" class="nav-link text-light bg-info m-2 p-2">View Categories</a></button>
             <button><a href="index.php?insert_brands" class="nav-link text-light bg-info m-2 p-2">Insert Brands</a></button>
@@ -85,7 +92,7 @@
   </div>
 
   <!---fourth child ----->
-  <div class="container">
+  <div class="container ">
   <?php
 
   if(isset($_GET['insert_category']))
@@ -98,6 +105,16 @@
     include('insert_brands.php');
   }
 
+  if(isset($_GET['view_products']))
+  {
+    include('view_products.php');
+  }
+
+  if(isset($_GET['edit_products']))
+  {
+    include('edit_products.php');
+  }
+
 
    ?>
 
@@ -105,7 +122,7 @@
 
 
 
-  <div class="bg-info p-3 text-center footer">
+  <div class="bg-info p-3 text-center footer ">
     <p>All rights are reserved © Designed and developed Rupesh Thakur</p>
 </div>
   
