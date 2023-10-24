@@ -12,6 +12,21 @@ if(isset($_GET['edit_brands']))
     $brand_title=$row['brand_title'];
 }
 
+if(isset($_POST['update_brand']))
+{
+    $new_brand_title=$_POST['brand_title'];
+    $update_query="update `brands` SET `brand_title`='$new_brand_title' where brand_id=$brand_id";
+    $result=mysqli_query($conn,$update_query);
+    if($result)
+    {
+        
+
+        echo "<script>alert('Updated Successfully')</script>";
+        echo "<script>window.open('index.php', '_self')</script>";
+  
+    }
+}
+
 ?>
 
 
@@ -33,6 +48,10 @@ if(isset($_GET['edit_brands']))
     
 </head>
 <body>
+
+<form action="" method="post">
+    
+
    <div class="container">
    <div class="mb-3 mt-3 w-50">
   <label for="Category_title" class="form-label">Brand Title</label>
@@ -40,11 +59,11 @@ if(isset($_GET['edit_brands']))
 </div>
 
 <div class="mb-3 mt-3 w-50">
-    <input type="submit" value="Update Brands" class="bg-info border-0 p-2 rounded-pill">
+    <input type="submit" value="Update Brands"  name="update_brand" class="bg-info border-0 p-2 rounded-pill">
 
 </div>
 
    </div>
-    
+   </form>
 </body>
 </html>
