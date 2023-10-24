@@ -246,6 +246,10 @@ cart();
     {
       include('my_orders.php');
     }
+    if(isset($_GET['delete_account']))
+    {
+      include('delete_account.php');
+    }
 
     ?>
 

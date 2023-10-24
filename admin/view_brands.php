@@ -37,7 +37,7 @@ include('../includes/connect.php');
 
   if($num_of_rows>0)
   {
-    echo " <thead class='bg-info'>
+    echo " <thead class='bg-info text-center'>
     <tr>
       <th scope='col'>S.no</th>
       <th scope='col'>Brand Title</th>
@@ -59,7 +59,7 @@ include('../includes/connect.php');
     <td>$si_num</td>
     <td>$brand_title</td>
     <td><a href='index.php?edit_brands=$brand_id' class='text-white'><i class='fa-solid fa-pen-to-square'></i> </a></td>
-    <td><a href='' class='text-white'><i class='fa-solid fa-trash-can'></i> </a></td>
+    <td><a href='index.php?delete_brands=$brand_id' class='text-white' data-toggle='modal' data-target='#exampleModal'> <i class='fa-solid fa-trash-can'> </i> </a></td>
   </tr>";
 
   $si_num++;
@@ -71,7 +71,38 @@ include('../includes/connect.php');
 
   </tbody>
 </table>
+
+<!--bootstrap model---->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <h4>Are you sure you want to delete this?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="./index.php?view_brands" class="text-light text-decoration-none">No</button>
+        <button type="button" class="btn btn-primary"><a href="index.php?delete_brands=<?php echo $brand_id?> "  class="text-light text-decoration-none">Yes</a></button>
+      </div>
     </div>
+  </div>
+</div>
+<!---model end--->
+    </div>
+    <?php
+    // Validation for deletion
+    // echo '<script>
+    // function confirmDelete(brand_id) {
+    //     console.log("Received brand_id: " + brand_id);
+    //     if (confirm("Are you sure you want to delete this brand?")) {
+    //         window.location.href = "delete_brand.php?brand_id=" + brand_id;
+    //     }
+    // }
+    // </script>';
     
+
+    ?>
 </body>
 </html>

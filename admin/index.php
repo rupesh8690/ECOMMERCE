@@ -6,6 +6,7 @@
     <title>Admin Dashboard</title>
     <!---bootstrap css link --->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
     <!--custom css--->
     <link rel="stylesheet" href="../styles.css">
 
@@ -79,9 +80,9 @@
             <button><a href="insert_product.php" class="nav-link text-light bg-info m-2 p-2">Insert Products</a></button>
             <button><a href="index.php?view_products" class="nav-link text-light bg-info m-2 p-2" >View Products</a></button>
             <button><a href="index.php?insert_category" class="nav-link text-light bg-info m-2 p-2">Insert Categories</a></button>
-            <button><a href="" class="nav-link text-light bg-info m-2 p-2">View Categories</a></button>
+            <button><a href="index.php?view_category" class="nav-link text-light bg-info m-2 p-2">View Categories</a></button>
             <button><a href="index.php?insert_brands" class="nav-link text-light bg-info m-2 p-2">Insert Brands</a></button>
-            <button><a href="" class="nav-link text-light bg-info m-2 p-2">View Brands</a></button>
+            <button><a href="index.php?view_brands" class="nav-link text-light bg-info m-2 p-2">View Brands</a></button>
             <button><a href="" class="nav-link text-light bg-info m-2 p-2">All orders</a></button>
             <button><a href="" class="nav-link text-light bg-info m-2 p-2">All payments</a></button>
             <button><a href="" class="nav-link text-light bg-info m-2 p-2">List users</a></button>
@@ -114,8 +115,35 @@
   {
     include('edit_products.php');
   }
+  if(isset($_GET['view_category']))
+  {
+    include('view_categories.php');
+  }
 
+  if(isset($_GET['view_brands']))
+  {
+    include('view_brands.php');
+  }
 
+  if(isset($_GET['edit_category']))
+  {
+    include('edit_category.php');
+  }
+
+  if(isset($_GET['edit_brands']))
+  {
+    include('edit_brands.php');
+  }
+
+  if(isset($_GET['delete_brands']))
+  {
+    include('delete_brand.php');
+  }
+
+  if(isset($_GET['delete_category']))
+  {
+    include('delete_category.php');
+  }
    ?>
 
   </div>
@@ -137,6 +165,9 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    
+  
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
