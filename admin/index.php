@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +53,21 @@
     <nav class="navbar navbar-expand-lg ">
     <ul class="navbar-nav ">
       <li class="nav-item ">
-        <a class="nav-link" href="">Welcome Guest</a>
+
+        <!-- <a class="nav-link" href="">Welcome Guest</a> -->
+        <?php
+      if(!isset($_SESSION['admin_name']))
+      {
+        echo "<a class='nav-link' href=''>Welcome Guest</a> ";
+      }
+      else
+      {
+       
+        echo "<a class='nav-link' href=''>Welcome " .$_SESSION['admin_name']."</a> ";
+
+      }
+
+      ?>
       </li>
     </ul>
 
@@ -86,7 +103,7 @@
             <button><a href="index.php?all_order" class="nav-link text-light bg-info m-2 p-2">All orders</a></button>
             <button><a href="index.php?all_payment" class="nav-link text-light bg-info m-2 p-2">All payments</a></button>
             <button><a href="index.php?list_users" class="nav-link text-light bg-info m-2 p-2">List users</a></button>
-            <button><a href="" class="nav-link text-light bg-info m-2 p-2">Logout</a></button>
+            <button><a href="logout.php" class="nav-link text-light bg-info m-2 p-2">Logout</a></button>
         </div>
 
     </div>
