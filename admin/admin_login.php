@@ -58,6 +58,11 @@ if(isset($_POST['admin_login']))
             height:70%;
             object-fit:contain;
         }
+        .eye-pasword
+            {
+                width:30px;
+                height:30px;
+            }
         </style>
     <!--bootstrap css link--->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -86,13 +91,16 @@ if(isset($_POST['admin_login']))
 
             <div class="mb-4">
                 <label for="admin_password" class="form-label mb-2 ">Password</label>
-                <input type="password" class="form-control w-75"  placeholder="Password" name="admin_password" required="required">
+                <div class="d-flex align-items-center">
+                <input type="password" class="form-control w-75 outline-0" id="admin_password" placeholder="Password" name="admin_password" required="required">
+                <!-- <img src="../image/eye.svg" alt="image" class="eye-pasword " id="eyeicon"> -->
+                </div>
             </div>
 
          
 
             <div class="mb-4">
-                <input type="submit" value="Login" name="admin_login" class="bg-info border-0 px-3 py-2 rounded ">
+                <input type="submit" value="Login" name="admin_login" class=" border-0 px-3 py-2 rounded text-white" style="background-color:#F05941;">
               
             </div>
 
@@ -107,6 +115,21 @@ if(isset($_POST['admin_login']))
     </div>
 
 </div>
+
+<!-- <script>
+    let eyeicon = document.getElementById("eyeicon");
+    let admin_password = document.getElementById("admin_password");
+
+    eyeicon.onclick = function () {
+        if (admin_password.type == "password") {
+            admin_password.type = "text";
+            eyeicon.src="../image/eye.png";
+        } else {
+            admin_password.type = "password";
+            eyeicon.src="../image/eye.svg";
+        }
+    }
+</script> -->
  
 
         <!--Bootstrap javascript link--->

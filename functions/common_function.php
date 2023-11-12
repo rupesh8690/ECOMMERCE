@@ -30,15 +30,16 @@ while($row_data=mysqli_fetch_assoc($result_query))
  $category_id=$row_data['category_id'];
  $brand_id=$row_data['brand_id'];
  $product_image1=$row_data['product_image1'];
+ $formattedPrice = number_format($product_price);
  echo " <div class='col-md-4'>'
  <!--first card--->
-<div class='card mb-2' style='width: 25rem;'>
-<img class='card-img-top' src='./admin/product_images/$product_image1' alt='$product_title'>
+<div class='card mb-2 '>
+<img class='card-img-top img-fluid' src='./admin/product_images/$product_image1' alt='$product_title'>
 <div class='card-body'>
     <h5 class='card-title'>$product_title</h5>
     <p class='card-text'>$product_description</p>
-    <p class='card-text'>price:$product_price/-</p>
-    <a href='index.php?cart_id=$product_id' class='btn btn-info'>Add to cart</a>
+    <p class='card-text'>price: $formattedPrice/-</p>
+    <a href='index.php?cart_id=$product_id' class='btn text-white text-white' style='background-color:#F05941;'>Add to cart</a>
       <a href='product_detail.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
 </div>
 </div>
@@ -87,15 +88,16 @@ $product_price=$row_data['product_price'];
 $category_id=$row_data['category_id'];
 $brand_id=$row_data['brand_id'];
 $product_image1=$row_data['product_image1'];
+$formattedPrice = number_format($product_price);
 echo " <div class='col-md-4'>'
 <!--first card--->
-<div class='card mb-2' style='width: 25rem;'>
+<div class='card mb-2'>
 <img class='card-img-top' src='./admin/product_images/$product_image1' alt='$product_title'>
 <div class='card-body'>
   <h5 class='card-title'>$product_title</h5>
   <p class='card-text'>$product_description</p>
-  <p class='card-text'>price:$product_price/-</p>
-  <a href='index.php?cart_id=$product_id' class='btn btn-info'>Add to cart</a>
+  <p class='card-text'>price:$formattedPrice/-</p>
+  <a href='index.php?cart_id=$product_id' class='btn  text-white' style='background-color:#F05941;'>Add to cart</a>
 
       <a href='product_detail.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
     
@@ -143,15 +145,16 @@ $product_price=$row_data['product_price'];
 $category_id=$row_data['category_id'];
 $brand_id=$row_data['brand_id'];
 $product_image1=$row_data['product_image1'];
+$formattedPrice = number_format($product_price);
 echo " <div class='col-md-4'>'
 <!--first card--->
-<div class='card mb-2' style='width: 25rem;'>
+<div class='card mb-2'>
 <img class='card-img-top' src='./admin/product_images/$product_image1' alt='$product_title'>
 <div class='card-body'>
   <h5 class='card-title'>$product_title</h5>
   <p class='card-text'>$product_description</p>
-  <p class='card-text'>price:$product_price/-</p>
-  <a href='index.php?cart_id=$product_id' class='btn btn-info'>Add to cart</a>
+  <p class='card-text'>price:$formattedPrice /-</p>
+  <a href='index.php?cart_id=$product_id' class='btn  text-white' style='background-color:#F05941;'>Add to cart</a>
   <a href='product_detail.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
 </div>
 </div>
@@ -189,15 +192,16 @@ $product_price=$row_data['product_price'];
 $category_id=$row_data['category_id'];
 $brand_id=$row_data['brand_id'];
 $product_image1=$row_data['product_image1'];
+$formattedPrice = number_format($product_price);
 echo " <div class='col-md-4'>'
 <!--first card--->
-<div class='card mb-2' style='width: 25rem;'>
+<div class='card mb-2'>
 <img class='card-img-top' src='./admin/product_images/$product_image1' alt='$product_title'>
 <div class='card-body'>
   <h5 class='card-title'>$product_title</h5>
   <p class='card-text'>$product_description</p>
-  <p class='card-text'>price:$product_price/-</p>
-  <a href='index.php?cart_id=$product_id' class='btn btn-info'>Add to cart</a>
+  <p class='card-text'>price:$formattedPrice/-</p>
+  <a href='index.php?cart_id=$product_id' class='btn  text-white' style='background-color:#F05941;'>Add to cart</a>
       <a href='product_detail.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
 </div>
 </div>
@@ -222,8 +226,8 @@ while($row_data=mysqli_fetch_assoc($result_brands))
 {
   $brand_title=$row_data['brand_title'];
   $brand_id=$row_data['brand_id'];
-  echo " <li class='item'>
-  <a href='index.php?brand=$brand_id' class='nav-item text-light text-justify'> $brand_title</a> </li>";
+  echo " <li class='item '>
+  <a href='index.php?brand=$brand_id' class='nav-item text-dark h6 text-justify'> $brand_title</a> </li>";
 }
 
 }
@@ -242,7 +246,7 @@ function getcategories()
       $category_title=$row_data['category_title'];
       $category_id=$row_data['category_id'];
       echo " <li class='item'>
-      <a href='index.php?category=$category_id' class='nav-item text-light text-justify'> $category_title</a> </li>";
+      <a href='index.php?category=$category_id' class='nav-item text-dark h6 text-justify'> $category_title</a> </li>";
     }
 }
 
@@ -278,15 +282,17 @@ $product_price=$row_data['product_price'];
 $category_id=$row_data['category_id'];
 $brand_id=$row_data['brand_id'];
 $product_image1=$row_data['product_image1'];
+$formattedPrice = number_format($product_price);
+
 echo " <div class='col-md-4'>'
 <!--first card--->
-<div class='card mb-2' style='width: 25rem;'>
+<div class='card mb-2'>
 <img class='card-img-top' src='./admin/product_images/$product_image1' alt='$product_title'>
 <div class='card-body'>
   <h5 class='card-title'>$product_title</h5>
   <p class='card-text'>$product_description</p>
-  <p class='card-text'>price:$product_price/-</p>
-  <a href='index.php?cart_id=$product_id' class='btn btn-info'>Add to cart</a>
+  <p class='card-text'>price:$formattedPrice/-</p>
+  <a href='index.php?cart_id=$product_id' class='btn  text-white' style='background-color:#F05941;'>Add to cart</a>
       <a href='product_detail.php?product_id=$product_id' class='btn btn-secondary'>View more</a>
 </div>
 </div>
@@ -326,16 +332,17 @@ $brand_id=$row_data['brand_id'];
 $product_image1=$row_data['product_image1'];
 $product_image2=$row_data['product_image2'];
 $product_image3=$row_data['product_image3'];
+$formattedPrice = number_format($product_price);
 
 echo " <div class='col-md-4'>'
 <!--first card--->
-<div class='card mb-2' style='width: 25rem;'>
+<div class='card mb-2'>
 <img class='card-img-top' src='./admin/product_images/$product_image1' alt='$product_title'>
 <div class='card-body'>
   <h5 class='card-title'>$product_title</h5>
   <p class='card-text'>$product_description</p>
-  <p class='card-text'>price:$product_price/-</p>
-  <a href='index.php?cart_id=$product_id' class='btn btn-info'>Add to cart</a>
+  <p class='card-text'>price:$formattedPrice/-</p>
+  <a href='index.php?cart_id=$product_id' class='btn  text-white' style='background-color:#F05941;'>Add to cart</a>
     <a href='index.php' class='btn btn-secondary'>Go back to home</a>
 </div>
 </div>
@@ -389,7 +396,7 @@ function getIPAddress() {
 // $ip = getIPAddress();  
 // echo 'User Real IP Address - '.$ip;  
 
-//cart function
+//cart function inserting to cart
 function cart()
 {
     if (isset($_GET['cart_id'])) {
@@ -410,19 +417,26 @@ function cart()
         if ($num_of_rows > 0) {
             echo "<script>alert('This item is already present inside the cart')</script>";
             echo "<script>window.open('index.php','_self')</script>";
+
+            // working with bootstrap toast
+                
+
+            //
         } else {
             $insert_query = "INSERT INTO `cart_details`(product_id, ip_address, quantity) VALUES ($get_product_id, '$ip_address', 0)";
             $result_query = mysqli_query($conn, $insert_query);
+            if($result_query)
+            {
+              echo "<script>alert('Added to the cart..')</script>";
+             
+              echo "<script>window.open('index.php','_self')</script>";
+            }
 
-            // if (!$result_query) {
-            //     die("Error in query: " . mysqli_error($conn));
-            // }
-
-            echo "<script>alert('Inserted successfully')</script>";
-            echo "<script>window.open('index.php','_self')</script>";
+           
         }
     }
 }
+
 
 
 //function to get cart item number
@@ -486,9 +500,11 @@ function total_cart_price()
         //     $total_price += $product_price;
         // }
     }
+    $formattedNumber = number_format($total_price);
 
     // Output the total cart price
-    echo "Total Cart Price: $total_price";
+    echo "Total Cart Price : Rs.   $formattedNumber ";
+    return $total_price;
 }
 
 

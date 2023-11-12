@@ -39,6 +39,10 @@ include('../includes/connect.php');
 <!---php code to access user id--->
 
 <?php
+if(isset($_GET['total_price']))
+{
+    $total_price=$_GET['total_price'];
+}
 $user_ip=getIPAddress();
 $user_query="select * from user_table where user_ip='$user_ip'";
 $result=mysqli_query($conn,$user_query);
@@ -47,30 +51,52 @@ $run_query=mysqli_fetch_array($result);//both array and assoc are very similar b
 $user_id=$run_query['user_id'];
 
 
+
 ?>
+
+
+ 
     <div class="container">
-        <h2 class="text-center text-info">Payment option</h2>
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-6">
-            <a href="https://www.esewa.com.np" target="_blank"> <img src="../image/esewa.png"></a>
-            <!--target attribute is used to open in new tab--->
+        <h2 class="text-center text-info">Payment Options</h2>
 
-            </div>
-
-            <div class="col-md-6">
-            <a href="order.php?user_id=<?php echo $user_id ?>"> <h2 class="text-center">Pay offline</h2></a>
-
-            <!--target attribute is used to open in new tab--->
-
-            </div>
-           
+        <div class="container w-50 mt-4 text-center ">
+        <select class="form-select p-2" id="paymentSelect" aria-label="Default select example">
+                <option selected>Select Payment Options</option>
+                <option value="1">Esewa</option>
+                <option value="2">Khalti</option>
+                <option value="3">Offline</option>
+            </select>
         </div>
+       
     </div>
+
 
     <!--Footer-->
 
 <!---includeing footer--->
+<script>
+    // Get the select element by its ID
+    var selectElement = document.getElementById('paymentSelect');
 
+    // Add an event listener to the select element
+    selectElement.addEventListener('change', function () {
+        // Get the selected option's value
+        var selectedOptionValue = selectElement.value;
+
+
+        // Redirect the user to the appropriate page based on the selected option
+        if (selectedOptionValue === '1') {
+           var total_price = <?php echo json_encode($total_price) ?>;
+            window.location.href = '/ecommerce/esewa_api/index.php?total_price= ' + total_price; // Replace with the actual URL
+        } else if (selectedOptionValue === '2') {
+            window.location.href = 'khalti-page.php'; // Replace with the actual URL
+        } else if (selectedOptionValue === '3') {
+            var user_id = <?php echo json_encode($user_id); ?>;
+            window.location.href = 'order.php?user_id=' + user_id;  
+            
+        }
+    });
+</script>
 
 </body>
 </html>

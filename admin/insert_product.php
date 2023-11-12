@@ -192,7 +192,7 @@ if($_POST['insert_product'])
         <!--submit button--->
         <div class="form-group  w-50 m-auto">
    
-        <input type="submit" class="btn btn-info my-3 w-100" id="product_price" name="insert_product" value="Insert Products">
+        <input type="submit" class="btn btn-info my-3 w-100" id="product_price" name="insert_product" value="Insert Products" style=" background-color:#F05941;">
         </div>
         </form>
     </div>

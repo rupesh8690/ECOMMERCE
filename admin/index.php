@@ -25,19 +25,25 @@ session_start();
           object-fit: contain;
         }
 
-   /* .footer
+   .footer
    {
-    position:absolute;
-
+    position: relative;
+  bottom: 0;
+  right: 0;
   
 
-
-   } */
+   }
 
    body
    {
     overflow-x:hidden;
+ 
    }
+   .custom-color 
+            {
+              background-color:#F05941;
+
+            }
 
     </style>
 </head>
@@ -46,7 +52,7 @@ session_start();
   <div class="container-fluid p-0">
 
   <!--first child--->
-  <nav class="navbar navbar-expand-lg navbar-light bg-info ">
+  <nav class="navbar navbar-expand-lg navbar-light custom-color  ">
     <div class="container-fluid">
     <img src="../image/logo.png" alt="" class="logo">
 
@@ -58,12 +64,12 @@ session_start();
         <?php
       if(!isset($_SESSION['admin_name']))
       {
-        echo "<a class='nav-link' href=''>Welcome Guest</a> ";
+        echo "<a class='nav-link text-white' href=''>Welcome Guest</a> ";
       }
       else
       {
        
-        echo "<a class='nav-link' href=''>Welcome " .$_SESSION['admin_name']."</a> ";
+        echo "<a class='nav-link text-white' href=''>Welcome " .$_SESSION['admin_name']."</a> ";
 
       }
 
@@ -81,36 +87,59 @@ session_start();
     <h3 class="text-center p-2">Manage Details </h3>
   </div>
 
+  <!--creating navbr--->
 
-  <!--third child-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img src="../image/logo.png" alt="" class="logo">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="row">
-  
-
-    <div class="col-md-12 bg-secondary p-2 d-flex " >
-        <div>
-            <a href="#"> <img src="../image/apples.png" alt="" class="admin_image p-1"></a>
-            <p class="text-light text-center">Admin name</p>
-        </div>
-       <!--button*10>a.nav-link.text-light.bg-info.my-1 --->
-        <div class="button text-center ml-5 " >
-            <button><a href="insert_product.php" class="nav-link text-light bg-info m-2 p-2">Insert Products</a></button>
-            <button><a href="index.php?view_products" class="nav-link text-light bg-info m-2 p-2" >View Products</a></button>
-            <button><a href="index.php?insert_category" class="nav-link text-light bg-info m-2 p-2">Insert Categories</a></button>
-            <button><a href="index.php?view_category" class="nav-link text-light bg-info m-2 p-2">View Categories</a></button>
-            <button><a href="index.php?insert_brands" class="nav-link text-light bg-info m-2 p-2">Insert Brands</a></button>
-            <button><a href="index.php?view_brands" class="nav-link text-light bg-info m-2 p-2">View Brands</a></button>
-            <button><a href="index.php?all_order" class="nav-link text-light bg-info m-2 p-2">All orders</a></button>
-            <button><a href="index.php?all_payment" class="nav-link text-light bg-info m-2 p-2">All payments</a></button>
-            <button><a href="index.php?list_users" class="nav-link text-light bg-info m-2 p-2">List users</a></button>
-            <button><a href="logout.php" class="nav-link text-light bg-info m-2 p-2">Logout</a></button>
-        </div>
-
-    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-dark" href="insert_product.php">Insert Products <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php?view_products">View products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php?insert_category">Insert Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php?view_category">View Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php?insert_brands">Insert Brands</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php?view_brands">View Brands</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php?all_order">All orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php?all_payment">All Payments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="index.php?list_users">List Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-dark" href="logout.php">Logout</a>
+      </li>
+     
+    
+    </ul>
+ 
   </div>
+</nav>
+<!--navbar ended--->
+
+
+
 
   <!---fourth child ----->
-  <div class="container ">
+  <div class="container vh-100 ">
   <?php
 
   if(isset($_GET['insert_category']))
@@ -193,10 +222,15 @@ session_start();
   </div>
 
 
+<!--including footer-->
 
-  <div class="bg-info p-3 text-center footer ">
-    <p>All rights are reserved © Designed and developed Rupesh Thakur</p>
-</div>
+<?php
+
+include('../includes/footer.php');
+?>
+  <!-- <div class=" p-3 text-center footer w-100 ">
+    <p>All rights are reserved © Designed and developed by Rupesh Thakur</p>
+</div> -->
   
 
 

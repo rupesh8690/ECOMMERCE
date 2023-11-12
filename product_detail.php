@@ -24,6 +24,23 @@ session_start();
 
     <!--custom css file link--->
        <link rel="stylesheet" href="styles.css">
+       <style>
+        body
+        {
+          overflow-x:hidden;
+
+        }
+        .custom-color 
+            {
+              background-color:#F05941;
+
+            }
+            .second-nav-bg
+            {
+              background-color:#A9A9A9;
+            }
+   
+       </style>
       
     
 </head>
@@ -32,7 +49,7 @@ session_start();
   <div class="container-fluid p-0">
 
   <!--first child-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <nav class="navbar navbar-expand-lg navbar-light custom-color ">
    <img src="./image/logo.png" alt="Ecommerce logo" class="logo"> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -41,26 +58,26 @@ session_start();
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="display_all.php">Products</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Register</a>
+        <a class="nav-link text-white" href="display_all.php">Products</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link text-white" href="#">Register</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> <sup>  <?php cart_item(); ?></sup></a>
+        <a class="nav-link text-white" href="#">Contact</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#"><?php total_cart_price(); ?></a>
+        <a class="nav-link text-white" href="#"><i class="fa-solid fa-cart-shopping"></i> <sup>  <?php cart_item(); ?></sup></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#"><?php total_cart_price(); ?></a>
       </li>
 
 
@@ -76,18 +93,18 @@ session_start();
   </div>
 </nav>
 <!--Second child-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-dark second-nav-bg">
 <ul class="navbar-nav mr-auto">
 <li class="nav-item">
 <?php
       if(!isset($_SESSION['username']))
       {
-        echo "<a class='nav-link' href=''>Welcome Guest</a> ";
+        echo "<a class='nav-link text-dark' href=''>Welcome Guest</a> ";
       }
       else
       {
        
-        echo "<a class='nav-link' href=''>Welcome " .$_SESSION['username']."</a> ";
+        echo "<a class='nav-link text-dark' href=''>Welcome " .$_SESSION['username']."</a> ";
 
       }
 
@@ -99,12 +116,12 @@ session_start();
       if(!isset($_SESSION['username']))
       {
         echo "   <li class='nav-item'>
-        <a class='nav-link' href='userlogin.php'>Login</a>
+        <a class='nav-link text-dark' href='userlogin.php'>Login</a>
       </li> ";
       }
       else{
         echo "   <li class='nav-item'>
-        <a class='nav-link' href='users_area/logout.php'>Logout</a>
+        <a class='nav-link text-dark' href='users_area/logout.php'>Logout</a>
       </li> ";
 
       }
@@ -120,14 +137,13 @@ session_start();
 <!--third child-->
 <div class="bg-light">
     <h3 class="text-center">
-        Hidden Store
+        Mithila Store
     </h3>
 
     <p class="text-center">
-        Communications is at the heart of e-commerce and community
+    Shop the latest trends and discover quality products at Mithila Store
     </p>
 </div>
-
 
 <!--fouth class-->
 <div class="row">

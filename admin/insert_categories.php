@@ -37,7 +37,7 @@ if(isset($_POST['insert_cat']))
 <!---input group--->
 <div class="input-group  mb-3 mt-2">
   <div class="input-group-prepend">
-    <span class="input-group-text bg-info" id="basic-addon1"> <i class="fa-solid fa-receipt"></i></span>
+    <span class="input-group-text " id="basic-addon1" style=" background-color:#F05941;"> <i class="fa-solid fa-receipt"></i></span>
   </div>
   <input type="text" class="form-control" placeholder="Insert Categories" aria-label="Username" aria-describedby="basic-addon1" name="cat_title">
 </div>
@@ -45,7 +45,7 @@ if(isset($_POST['insert_cat']))
 <div class="input-group">
 <!-- <input type="submit" class="form-control bg-info text-dark"  aria-describedby="basic-addon1" name="cat_title"> -->
 
-<button class="bg-info border-0 my-3 p-2 text-light" name="insert_cat">Insert Categories</button>
+<button class=" border-0 my-3 p-2 text-white rounded " name="insert_cat" style=" background-color:#F05941;" >Insert Categories</button>
 
 </div>
 

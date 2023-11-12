@@ -31,6 +31,15 @@ session_start();
                 width:30px;
                 height:30px;
             }
+            .custom-color 
+            {
+              background-color:#F05941;
+
+            }
+            .second-nav-bg
+            {
+              background-color:#A9A9A9;
+            }
         #user_password:focus {
         outline: none; /* Remove the focus outline (default browser behavior) */
         box-shadow: none; /* Remove any focus box shadow */
@@ -51,7 +60,7 @@ session_start();
   <div class="container-fluid p-0">
 
 <!--first child-->
-<nav class="navbar navbar-expand-lg navbar-light bg-info">
+<nav class="navbar navbar-expand-lg navbar-light custom-color " >
  <img src="../image/logo.png" alt="Ecommerce logo" class="logo"> 
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
@@ -60,24 +69,24 @@ session_start();
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-      <a class="nav-link " href="../index.php">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-link text-white " href="../index.php">Home <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link  " href="../display_all.php">Products</a>
+      <a class="nav-link  text-white " href="../display_all.php">Products</a>
     </li>
 
     <?php
     if(!isset($_SESSION['username']))
     {
       echo " <li class='nav-item'>
-      <a class='nav-link ' href='../users_area/user_registration.php'>Register</a>
+      <a class='nav-link text-white ' href='../users_area/user_registration.php'>Register</a>
     </li>";
     }
     else
     {
      
       echo " <li class='nav-item'>
-      <a class='nav-link ' href='../users_area/profile.php'>My Account</a>
+      <a class='nav-link  text-white' href='../users_area/profile.php'>My Account</a>
     </li>";
 
     }
@@ -88,16 +97,16 @@ session_start();
    
 
     <li class="nav-item">
-      <a class="nav-link" href="#">Contact</a>
+      <a class="nav-link text-white" href="#">Contact</a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="../cart.php"><i class="fa-solid fa-cart-shopping"></i> <sup><?php cart_item(); ?></sup></a>
+      <a class="nav-link text-white" href="../cart.php"><i class="fa-solid fa-cart-shopping"></i> <sup><?php cart_item(); ?></sup></a>
     </li>
 
     <li class="nav-item">
    
-      <a class="nav-link" href="#"><?php total_cart_price() ?></a>
+      <a class="nav-link text-white" href="#"><?php total_cart_price() ?></a>
     </li>
 
 
@@ -117,19 +126,19 @@ session_start();
 cart();
 ?>
 <!--Second child-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-dark second-nav-bg">
 <ul class="navbar-nav mr-auto">
 <li class="nav-item">
 
     <?php
     if(!isset($_SESSION['username']))
     {
-      echo "<a class='nav-link' href=''>Welcome Guest</a> ";
+      echo "<a class='nav-link text-dark' href=''>Welcome Guest</a> ";
     }
     else
     {
      
-      echo "<a class='nav-link' href=''>Welcome " .$_SESSION['username']."</a> ";
+      echo "<a class='nav-link text-dark' href=''>Welcome " .$_SESSION['username']."</a> ";
 
     }
 
@@ -142,12 +151,12 @@ cart();
     if(!isset($_SESSION['username']))
     {
       echo "   <li class='nav-item'>
-      <a class='nav-link' href='users_area/userlogin.php'><i class='fa-solid fa-user '></i>    Login </a>
+      <a class='nav-link text-dark' href='users_area/userlogin.php'><i class='fa-solid fa-user '></i>    Login </a>
     </li> ";
     }
     else{
       echo "   <li class='nav-item'>
-      <a class='nav-link' href='users_area/logout.php'>Logout</a>
+      <a class='nav-link text-dark' href='users_area/logout.php'>Logout</a>
     </li> ";
 
     }
@@ -161,13 +170,13 @@ cart();
 
 <!--third child-->
 <div class="bg-light">
-  <h3 class="text-center">
-      Hidden Store
-  </h3>
+    <h3 class="text-center">
+        Mithila Store
+    </h3>
 
-  <p class="text-center">
-      Communications is at the heart of e-commerce and community
-  </p>
+    <p class="text-center">
+    Shop the latest trends and discover quality products at Mithila Store
+    </p>
 </div>
     <div class="container my-3 vh-100 "><!--container fluid class will take 100% of width--->
     <h2 class="text-center ">User Login</h2>
@@ -193,20 +202,20 @@ cart();
                 <label for="user_password">Password</label>
                 <div class="d-flex align-items-center border ">
                 <input type="password" class="form-control border-0 outline-0 " id="user_password" placeholder="Password" name="user_password" required="required">
-                <img src="../image/eye.svg" alt="image" class="eye-pasword" id="eyeicon">
+                <!-- <img src="../image/eye.svg" alt="image" class="eye-pasword" id="eyeicon"> -->
 
                 </div>
             </div>
 
             
             <div class="mb-3">
-                <a href="" class="text-info">Forgot password</a>
+                <a href=""  style="color:#F05941;">Forgot password</a>
             </div>
            
 
             <div class="mt-4 pt-2 ">
-                <input type="submit" value="Login" name="user_login" class="rounded bg-info mb-3 py-2  px-3  border-0">
-                <p class="small fw-bolder mt-2 pt-2 mb-0"><strong>Don't have an account? </strong><a href="user_registration.php" class="text-decoration-none text-danger">Register</a></p>
+                <input type="submit" value="Login" name="user_login" class="rounded  mb-3 py-2  px-3  border-0 text-white" style="background-color:#F05941;">
+                <p class="small fw-bolder mt-2 pt-2 mb-0"><strong>Don't have an account? </strong><a href="user_registration.php" class="text-decoration-none " style="color:#F05941;">Register</a></p>
             </div>
 
            </form>
@@ -217,7 +226,7 @@ cart();
 
 
     </div>
-    <script>
+    <!-- <script>
     let eyeicon = document.getElementById("eyeicon");
     let user_password = document.getElementById("user_password");
 
@@ -230,7 +239,7 @@ cart();
             eyeicon.src="../image/eye.svg";
         }
     }
-</script>
+</script> -->
 
 <!---includeing footer--->
 

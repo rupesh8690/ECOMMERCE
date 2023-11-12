@@ -3,6 +3,11 @@
 include('../includes/connect.php');
 @session_start(); //@means if the page is active then only session is started
 
+if(isset($_GET['total_price']))
+{
+  $total_price=$_GET['total_price'];
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +28,22 @@ include('../includes/connect.php');
 
     <!--custom css file link--->
        <link rel="stylesheet" href="../styles.css">
+
+       <style>
+        body
+        {
+          overflow-x:hidden;
+        }
+        .footer
+   {
+    position: fixed;
+  bottom: 0;
+  right: 0;
+  
+
+   }
+
+        </style>
       
     
 </head>
@@ -137,12 +158,15 @@ include('../includes/connect.php');
 
 <!--Footer-->
 
-<!---includeing footer--->
 
-<?php
+<div class="bg-info p-3 text-center footer w-100">
+    <p>All rights are reserved © Designed and developed by Rupesh Thakur</p>
+</div>
+
+<!-- <?php
 include("../includes/footer.php");
 
-?>
+?> -->
   </div>
 
 

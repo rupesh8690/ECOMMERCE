@@ -32,6 +32,9 @@ include('../includes/connect.php');
 </head>
 <body>
   <h3 class="text-center text-success mt-2">All products</h3>
+
+
+
 <table class="table mt-3 mb-3">
   <?php
   global $conn;
@@ -114,5 +117,6 @@ function confirmDelete(product_id) {
 </table>
   </tbody>
 </table>
+
 </body>
 </html>

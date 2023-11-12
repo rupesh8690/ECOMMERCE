@@ -108,7 +108,7 @@ if (isset($_POST['register'])) {
             </div>
 
             <div class="mb-4">
-                <input type="submit" value="Register" name="register" class="bg-info border-0 px-3 py-2 rounded ">
+                <input type="submit" value="Register" name="register" class="text-white border-0 px-3 py-2 rounded " style="background-color:#F05941;">
               
             </div>
 

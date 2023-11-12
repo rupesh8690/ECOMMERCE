@@ -61,7 +61,7 @@ include('../functions/common_function.php');
             </div>
             <div class="mb-3">
                 <label for="user_address" class="form-label">Address </label>
-                <input type="text" class="form-control" id="user_address" placeholder="Enter your email address" name="user_address"
+                <input type="text" class="form-control" id="user_address" placeholder="Enter your  address" name="user_address"
                 autocomplete="off" required="required">
             </div>
 
@@ -72,7 +72,7 @@ include('../functions/common_function.php');
             </div>
 
             <div class="mt-4 pt-2 ">
-                <input type="submit" value="Register" name="register" class="form-control bg-info mb-3 py-2  px-3  border-0">
+                <input type="submit" value="Register" name="register" class="form-control text-white mb-3 py-2  px-3  border-0" style="background-color:#F05941;">
                 <p class="small fw-bolder mt-2 pt-2 mb-0">Already have an account? <a href="userlogin.php" class="text-decoration-none text-danger">Login</a></p>
             </div>
 
