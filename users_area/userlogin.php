@@ -56,129 +56,8 @@ session_start();
    
 </head>
 <body >
-      <!--Navbar-->
-  <div class="container-fluid p-0">
 
-<!--first child-->
-<nav class="navbar navbar-expand-lg navbar-light custom-color " >
- <img src="../image/logo.png" alt="Ecommerce logo" class="logo"> 
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link text-white " href="../index.php">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link  text-white " href="../display_all.php">Products</a>
-    </li>
-
-    <?php
-    if(!isset($_SESSION['username']))
-    {
-      echo " <li class='nav-item'>
-      <a class='nav-link text-white ' href='../users_area/user_registration.php'>Register</a>
-    </li>";
-    }
-    else
-    {
-     
-      echo " <li class='nav-item'>
-      <a class='nav-link  text-white' href='../users_area/profile.php'>My Account</a>
-    </li>";
-
-    }
-
-
-    ?>
-
-   
-
-    <li class="nav-item">
-      <a class="nav-link text-white" href="#">Contact</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link text-white" href="../cart.php"><i class="fa-solid fa-cart-shopping"></i> <sup><?php cart_item(); ?></sup></a>
-    </li>
-
-    <li class="nav-item">
-   
-      <a class="nav-link text-white" href="#"><?php total_cart_price() ?></a>
-    </li>
-
-
-  
-  </ul>
-  <form class="form-inline my-2 my-lg-0" action="../search_product.php" method="get">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-    <input type="submit" value="search" class="btn btn-outline-light" name="search_data_product">
-    <!-- <button class="btn btn-outline-light my-2 my-sm-0 " type="submit">Search</button> -->
-
-  
-  </form>
-</div>
-</nav>
-<!--calling cart function--->
-<?php
-cart();
-?>
-<!--Second child-->
-<nav class="navbar navbar-expand-lg navbar-dark second-nav-bg">
-<ul class="navbar-nav mr-auto">
-<li class="nav-item">
-
-    <?php
-    if(!isset($_SESSION['username']))
-    {
-      echo "<a class='nav-link text-dark' href=''>Welcome Guest</a> ";
-    }
-    else
-    {
-     
-      echo "<a class='nav-link text-dark' href=''>Welcome " .$_SESSION['username']."</a> ";
-
-    }
-
-    ?>
-      
-    </li>
-
-    <li class="nav-item">
-    <?php
-    if(!isset($_SESSION['username']))
-    {
-      echo "   <li class='nav-item'>
-      <a class='nav-link text-dark' href='users_area/userlogin.php'><i class='fa-solid fa-user '></i>    Login </a>
-    </li> ";
-    }
-    else{
-      echo "   <li class='nav-item'>
-      <a class='nav-link text-dark' href='users_area/logout.php'>Logout</a>
-    </li> ";
-
-    }
-    ?>
-      
-    </li>
-</ul>
-  
-
-</nav>
-
-<!--third child-->
-<div class="bg-light">
-    <h3 class="text-center">
-        Mithila Store
-    </h3>
-
-    <p class="text-center">
-    Shop the latest trends and discover quality products at Mithila Store
-    </p>
-</div>
-    <div class="container my-3 vh-100 "><!--container fluid class will take 100% of width--->
+    <div class="container my-3 bg-light pb-5 w-50 "><!--container fluid class will take 100% of width--->
     <h2 class="text-center ">User Login</h2>
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-lg-12 col-xl-6 ">
@@ -193,7 +72,7 @@ cart();
             <!---"multipart/form-data" is typically used when you want to submit files (e.g., images, documents) along with other form data.--->
             <div class="mb-3">
                 <label for="user_name" class="form-label">User name</label>
-                <input type="text" class="form-control" id="user_name" name="user_name"
+                <input type="text" class="form-control " id="user_name" name="user_name"
                  placeholder="Enter your username" autocomplete="off" required="required">
 
             </div>
@@ -241,12 +120,7 @@ cart();
     }
 </script> -->
 
-<!---includeing footer--->
 
-<?php
-include("../includes/footer.php");
-
-?>
 
     
 </body>
@@ -287,7 +161,7 @@ if(isset($_POST['user_login']))
             else{
                 $_SESSION['username']=$user_name;
                 echo "<script>alert('Login successfull')</script>";
-                echo "<script>window.open('payment.php','_self') </script>";
+                echo "<script>window.open('../cart.php','_self') </script>";
             }
 
         }

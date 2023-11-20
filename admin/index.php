@@ -7,6 +7,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+
+
+
     <!---bootstrap css link --->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
@@ -23,6 +26,14 @@ session_start();
         {
           width: 100px;
           object-fit: contain;
+        }
+
+        a:hover
+        {
+          background-color: #2980b9;
+          color: #ffffff;
+          padding:10px;
+
         }
 
    .footer
@@ -48,6 +59,8 @@ session_start();
     </style>
 </head>
 <body>
+
+</script>
 
   <div class="container-fluid p-0">
 

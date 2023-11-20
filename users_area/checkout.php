@@ -34,6 +34,15 @@ if(isset($_GET['total_price']))
         {
           overflow-x:hidden;
         }
+        .custom-color 
+            {
+              background-color:#F05941;
+
+            }
+            .second-nav-bg
+            {
+              background-color:#A9A9A9;
+            }
         .footer
    {
     position: fixed;
@@ -52,7 +61,7 @@ if(isset($_GET['total_price']))
   <div class="container-fluid p-0">
 
   <!--first child-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <nav class="navbar navbar-expand-lg navbar-light custom-color ">
    <img src="../image/logo.png" alt="Ecommerce logo" class="logo"> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -61,18 +70,18 @@ if(isset($_GET['total_price']))
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="../index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../display_all.php">Products</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="user_registration.php">Register</a>
+        <a class="nav-link text-white" href="../display_all.php">Products</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link text-white" href="user_registration.php">Register</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Contact</a>
       </li>
     
     </ul>
@@ -80,19 +89,19 @@ if(isset($_GET['total_price']))
 </nav>
 
 <!--Second child-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-dark second-nav-bg">
 <ul class="navbar-nav mr-auto">
 <li class="nav-item">
         <!-- <a class="nav-link" href="#">Welcome Guest</a> -->
         <?php
       if(!isset($_SESSION['username']))
       {
-        echo "<a class='nav-link' href=''>Welcome Guest</a> ";
+        echo "<a class='nav-link text-dark' href=''>Welcome Guest</a> ";
       }
       else
       {
        
-        echo "<a class='nav-link' href=''>Welcome " .$_SESSION['username']."</a> ";
+        echo "<a class='nav-link text-dark' href=''>Welcome " .$_SESSION['username']."</a> ";
 
       }
 
@@ -103,12 +112,12 @@ if(isset($_GET['total_price']))
       if(!isset($_SESSION['username']))
       {
         echo "   <li class='nav-item'>
-        <a class='nav-link' href='userlogin.php'>Login</a>
+        <a class='nav-link text-dark' href='userlogin.php'>Login</a>
       </li> ";
       }
       else{
         echo "   <li class='nav-item'>
-        <a class='nav-link' href='logout.php'>Logout</a>
+        <a class='nav-link text-dark' href='logout.php'>Logout</a>
       </li> ";
 
       }
@@ -125,11 +134,11 @@ if(isset($_GET['total_price']))
 <!--third child-->
 <div class="bg-light">
     <h3 class="text-center">
-        Hidden Store
+        Mithila Store
     </h3>
 
     <p class="text-center">
-        Communications is at the heart of e-commerce and community
+    Shop the latest trends and discover quality products at Mithila Store
     </p>
 </div>
 
@@ -157,17 +166,16 @@ if(isset($_GET['total_price']))
 
 
 <!--Footer-->
+<div class=' p-3   text-center fixed-bottom' style='background-color:#F3EEEA;'>
+<p>All rights are reserved © Designed and developed Rupesh Thakur</p>
+<a href='https://www.facebook.com/rupesh.love.9/' class='text-dark'><i class='fab fa-facebook'></i></a>
+<a href='https://github.com/rupesh8690'  class='text-dark'><i class='fa-brands fa-github'></i></a>
 
+<i class='fa-brands fa-linkedin'></i>
 
-<div class="bg-info p-3 text-center footer w-100">
-    <p>All rights are reserved © Designed and developed by Rupesh Thakur</p>
 </div>
 
-<!-- <?php
-include("../includes/footer.php");
-
-?> -->
-  </div>
+ 
 
 
 

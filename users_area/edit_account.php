@@ -58,13 +58,14 @@ if(isset($_GET['edit_account']))
             width: 6.25rem;
             height: 6.25rem;
         }
+      
         </style>
 
 
 </head>
 <body>
   
-<h3 class="text-success ">Edit Account</h3>
+<h3  style="color:#F05941;">Edit Account</h3>
 <form action="" method="post" enctype="multipart/form-data">
 
 <div class="form-outline mb-4">
@@ -94,7 +95,7 @@ if(isset($_GET['edit_account']))
 
 </div>
 
-<input type="submit" value="Update" name="user_update" class="py-2 px-3 bg-info border-0 m-auto">
+<input type="submit" value="Update" name="user_update" class="py-2 px-3 text-white border-0 m-auto  " style="background-color:#F05941;">
 </form>
 </body>
 </html>

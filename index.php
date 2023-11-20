@@ -38,7 +38,7 @@ session_start();
             {
               background-color:#A9A9A9;
             }
-            
+           
          
             </style>
 
@@ -226,9 +226,6 @@ cart();
 </div>
  
 </div>
-
-
-
 
 <!--Footer-->
 

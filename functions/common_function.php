@@ -72,7 +72,10 @@ $num_of_rows=mysqli_num_rows($result_query);//getting total number of rows from 
 if($num_of_rows==0)
 {
   
-  echo "<h2 class='text-danger text-right'> No products available for this category </h2>";
+  echo "<div class='container text-center mt-5 vh-100 '>
+  <h2 class='text-danger '>No products available for this category!</h2>
+</div>
+";
 
 }
 
@@ -129,7 +132,10 @@ $num_of_rows=mysqli_num_rows($result_query);//getting total number of rows from 
 if($num_of_rows==0)
 {
   
-  echo "<h2 class='text-danger text-right'> This brand is not available for service!</h2>";
+  echo "<div class='container text-center mt-5 vh-100'>
+  <h2 class='text-danger'>This brand is not available for service!</h2>
+</div>
+";
 
 }
 
@@ -353,7 +359,7 @@ echo " <div class='col-md-4'>'
   
  <div class='row'>
   <div class='col-md-12'>
-  <h4 class='text-center text-info '>Related products</h4>
+  <h4 class='text-center  '>Related products</h4>
   </div>
 
  <div class='col-md-6'>
@@ -529,12 +535,12 @@ function get_user_order_detail()
           $row_count=mysqli_num_rows($result_order_query);
           if($row_count>0)
           {
-            echo "<h3 class='text-center mt-4 text-success'> You have <span class='text-danger'> $row_count </span> pending  orders  </h3>
+            echo "<h3 class='text-center mt-4 '> You have <span class='text-danger'> $row_count </span> pending  orders  </h3>
             <p class='text-center '> <a href='profile.php?my_orders' class='text-dark text-decoration-none'> Order Details </a> </p>";
           }
           else
           {
-            echo "<h3 class='text-center mt-4 text-success'> You have <span class='text-danger'> $row_count </span> pending  orders  </h3>
+            echo "<h3 class='text-center mt-4 '> You have <span class='text-danger'> $row_count </span> pending  orders  </h3>
             <p class='text-center '> <a href='index.php' class='text-dark text-decoration-none'> Explore the products </a> </p>";
 
           }

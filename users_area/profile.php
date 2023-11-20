@@ -41,6 +41,15 @@ session_start();
 body
 {
     overflow-x:hidden;}
+    .custom-color 
+            {
+              background-color:#F05941;
+
+            }
+            .second-nav-bg
+            {
+              background-color:#A9A9A9;
+            }
         
       </style>
       
@@ -51,7 +60,7 @@ body
   <div class="container-fluid p-0">
 
   <!--first child-->
-  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <nav class="navbar navbar-expand-lg navbar-light custom-color fixed-top">
    <img src="../image/logo.png" alt="Ecommerce logo" class="logo"> 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -60,10 +69,10 @@ body
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="../index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../display_all.php">Products</a>
+        <a class="nav-link text-white" href="../display_all.php">Products</a>
       </li>
 
       
@@ -71,14 +80,14 @@ body
       if(!isset($_SESSION['username']))
       {
         echo " <li class='nav-item'>
-        <a class='nav-link' href='user_registration.php'>Register</a>
+        <a class='nav-link text-white' href='user_registration.php'>Register</a>
       </li>";
       }
       else
       {
        
         echo " <li class='nav-item'>
-        <a class='nav-link' href='profile.php'>My Account</a>
+        <a class='nav-link text-white' href='profile.php'>My Account</a>
       </li>";
 
       }
@@ -91,15 +100,15 @@ body
       </li> -->
 
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link text-white" href="#">Contact</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="../cart.php"><i class="fa-solid fa-cart-shopping"></i> <sup><?php cart_item(); ?></sup></a>
+        <a class="nav-link text-white" href="../cart.php"><i class="fa-solid fa-cart-shopping"></i> <sup><?php cart_item(); ?></sup></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#"><?php total_cart_price(); ?></a>
+        <a class="nav-link text-white" href="#"><?php total_cart_price(); ?></a>
       </li>
 
 
@@ -119,19 +128,19 @@ body
 cart();
 ?>
 <!--Second child-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-dark second-nav-bg " style="margin-top: 86px;">
 <ul class="navbar-nav mr-auto">
 <li class="nav-item">
 
       <?php
       if(!isset($_SESSION['username']))
       {
-        echo "<a class='nav-link' href=''>Welcome Guest</a> ";
+        echo "<a class='nav-link text-dark' href=''>Welcome Guest</a> ";
       }
       else
       {
        
-        echo "<a class='nav-link' href=''>Welcome " .$_SESSION['username']."</a> ";
+        echo "<a class='nav-link text-dark' href=''>Welcome " .$_SESSION['username']."</a> ";
 
       }
 
@@ -144,12 +153,12 @@ cart();
       if(!isset($_SESSION['username']))
       {
         echo "   <li class='nav-item'>
-        <a class='nav-link' href='userlogin.php'>Login</a>
+        <a class='nav-link text-dark' href='userlogin.php'>Login</a>
       </li> ";
       }
       else{
         echo "   <li class='nav-item'>
-        <a class='nav-link' href='logout.php'>Logout</a>
+        <a class='nav-link text-dark' href='logout.php'>Logout</a>
       </li> ";
 
       }
@@ -164,11 +173,11 @@ cart();
 <!--third child-->
 <div class="bg-light">
     <h3 class="text-center">
-        Hidden Store
+        Mithila Store
     </h3>
 
     <p class="text-center">
-        Communications is at the heart of e-commerce and community
+    Shop the latest trends and discover quality products at Mithila Store
     </p>
 </div>
 
@@ -178,8 +187,8 @@ cart();
 
 <div class="row">
   <div class="col-md-2 ">
-  <ul class="navbar-nav mb-1 text-center bg-secondary" style="height:100vh">
-        <li class="item bg-info">
+  <ul class="navbar-nav mb-1 text-center second-nav-bg" style="height:100vh">
+        <li class="item custom-color">
           <a href="#" class="nav-item text-light text-decoration-none "> <h4 class="text-center">Your  Profile</h4></a>
         </li>
         <?php
@@ -194,7 +203,7 @@ cart();
          $user_image=$row['user_image'];
          echo "  <li class='item '>
        
-         <img src='./user_images/$user_image' alt='user' class='profile_img my-4 m'>
+         <img src='./user_images/$user_image' alt='user' class='profile_img my-4 m img-fluid'>
   
         </li> ";
 
@@ -208,28 +217,28 @@ cart();
        
 
         <li class="item ">
-          <a href="profile.php" class="nav-item text-light text-decoration-none"> Pending Orders</a>
+          <a href="profile.php" class="nav-item text-dark text-decoration-none"> Pending Orders</a>
         </li>
 
         <li class="item ">
-          <a href="profile.php?edit_account" class="nav-item text-light text-decoration-none"> Edit Account</a>
+          <a href="profile.php?edit_account" class="nav-item text-dark text-decoration-none"> Edit Account</a>
         </li>
         <!-- <li class="item ">
           <a href="#" class="nav-item text-light text-decoration-none"> <?php echo $user_name ?></a>
         </li> -->
 
         <li class="item ">
-          <a href="profile.php?my_orders" class="nav-item text-light text-center text-decoration-none"> My orders</a>
+          <a href="profile.php?my_orders" class="nav-item text-dark text-center text-decoration-none"> My orders</a>
         </li>
 
         <li class="item ">
-          <a href="profile.php?delete_account" class="nav-item text-light text-decoration-none"> Delete Account</a>
+          <a href="profile.php?delete_account" class="nav-item text-dark text-decoration-none"> Delete Account</a>
         </li>
 
       
 
         <li class="item ">
-          <a href="logout.php" class="nav-item text-light text-decoration-none"> Logout</a>
+          <a href="logout.php" class="nav-item text-dark text-decoration-none"> Logout</a>
         </li>
     </ul>
       

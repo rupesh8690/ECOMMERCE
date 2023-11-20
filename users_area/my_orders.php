@@ -7,10 +7,17 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <title>My orders</title>
+    <style>
+       .custom-color 
+            {
+              background-color:#F05941;
+
+            }
+    </style>
 </head>
 <body>
-    <h3 class="text-center text-info mt-3">My orders</h3>
-    
+    <h3 class="text-center h3  mt-3" >My orders</h3>
+  <div class="table-responsive">
     <table class="table table-bordered text-center">
   
 
@@ -30,17 +37,18 @@
 
   //   if(mysqli_num_rows($result_order)>0)
   //  {
-   echo "  <thead class='bg-info'>
+   echo "  <thead class='custom-color '>
    <tr>
-     <th scope='col'>SI no</th>
-     <th scope='col'>Amout Due</th>
-     <th scope='col'>Total products</th>
-     <th scope='col'>Date</th>
-     <th scope='col'>Complete/Incomplete</th>
-     <th scope='col'>Status</th>
+     <th scope='col' class='text-white'>SI no</th>
+     <th scope='col' class='text-white'>Amount Due</th>
+     <th scope='col' class='text-white'>Total Products</th>
+     <th scope='col' class='text-white'>Date</th>
+     <th scope='col' class='text-white'>Complete/Incomplete</th>
+     <th scope='col' class='text-white'>Status</th>
      
    </tr>
- </thead>";
+ </thead>
+ <tbody>";
 // }
 $si=1;
 
@@ -93,6 +101,8 @@ while ($row_data = mysqli_fetch_array($result_order)) {
    
   </tbody>
 </table>
+
+
 
 </body>
 </html>

@@ -95,10 +95,17 @@ if($_POST['insert_product'])
 
     <!--custom css file link--->
     <link rel="stylesheet" href="../styles.css">
+
+    <style>
+        .cont-bg
+        {
+            background-color:#EEF5FF;
+        }
+    </style>
       
 </head>
-<body class="bg-light">
-    <div class="container">
+<body class="">
+    <div class="container cont-bg ">
         <h1 class="text-center mt-3">Insert Products</h1>
         <!--form-->
         <form action="" method="post" enctype="multipart/form-data">

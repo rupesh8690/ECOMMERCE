@@ -65,7 +65,7 @@ session_start();
       </li>
 
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Register</a>
+        <a class="nav-link text-white" href="users_area/user_registration.php">Register</a>
       </li>
 
       <li class="nav-item">
@@ -165,9 +165,9 @@ session_start();
    
   
     <!--side navbar-->
-    <div class="col-md-2 bg-secondary p-0">
+    <div class="col-md-2 second-nav-bg p-0">
       <ul class="navbar-nav me-auto text-center">
-        <li class="item bg-info">
+        <li class="item custom-color">
           <a href="#" class="nav-item text-light text-justify"> <h4 class="text-center">Delivary Brands</h4></a>
 
         </li>
@@ -182,7 +182,7 @@ session_start();
         <!--categories--->
 
           <ul class="navbar-nav me-auto text-center">
-        <li class="item bg-info">
+        <li class="item custom-color">
           <a href="#" class="nav-item text-light text-justify"> <h4 class="text-center">Categories</h4></a>
         </li>
 

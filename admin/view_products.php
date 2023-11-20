@@ -31,7 +31,7 @@ include('../includes/connect.php');
       </style>
 </head>
 <body>
-  <h3 class="text-center text-success mt-2">All products</h3>
+  <h3 class="text-center  mt-2" style="color:#F05941;">All products</h3>
 
 
 
@@ -44,7 +44,7 @@ include('../includes/connect.php');
   $num_of_rows=mysqli_num_rows($result_query);
   if($num_of_rows>0)
   {
-    echo " <thead class='bg-info'>
+    echo " <thead class='text-white' style='background-color:#F05941;'>
     <tr>
       <th scope='col'>Product ID</th>
       <th scope='col'>Product Title</th>
@@ -56,7 +56,7 @@ include('../includes/connect.php');
       <th scope='col'>Delete</th>
     </tr>
   </thead>
-  <tbody class='bg-secondary text-white'>";
+  <tbody class=' text-dark' style='background-color:#A9A9A9;'>";
   while($data=mysqli_fetch_assoc($result_query))
   {
     $product_id=$data['product_id'];
@@ -83,9 +83,9 @@ include('../includes/connect.php');
       ?>
     </td>
     <td>true</td>
-    <td><a href='index.php?edit_products=<?php echo $product_id ?> ' class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
+    <td><a href='index.php?edit_products=<?php echo $product_id ?> ' class='text-dark'><i class='fa-solid fa-pen-to-square'></i></a></td>
     <td>
-    <a href="#" class="text-light">
+    <a href="#" class="text-dark">
         <i class="fa-solid fa-trash-can" onclick="confirmDelete(<?php echo $product_id; ?>)"></i>
     </a>
 </td>

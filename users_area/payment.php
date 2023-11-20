@@ -57,7 +57,7 @@ $user_id=$run_query['user_id'];
 
  
     <div class="container">
-        <h2 class="text-center text-info">Payment Options</h2>
+        <h2 class="text-center " style="color:#F05941;">Payment Options</h2>
 
         <div class="container w-50 mt-4 text-center ">
         <select class="form-select p-2" id="paymentSelect" aria-label="Default select example">

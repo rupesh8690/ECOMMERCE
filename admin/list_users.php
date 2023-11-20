@@ -37,7 +37,7 @@ include('../includes/connect.php');
 </head>
 <body>
     <div class="container">
-        <h3 class="text-center text-info mt-3">All Users</h3>
+        <h3 class="text-center  mt-3" style='color:#F05941;'>All Users</h3>
     <table class="table table-bordered">
   <thead class="bg-info">
 
@@ -50,7 +50,7 @@ include('../includes/connect.php');
 
   if($num_of_rows>0)
   {
-    echo " <thead class='bg-info text-center'>
+    echo " <thead class=' text-white text-center' style='background-color:#F05941;'>
     <tr>
       <th scope='col'>SI no</th>
       <th scope='col'>Username</th>
@@ -62,7 +62,7 @@ include('../includes/connect.php');
    
     </tr>
   </thead>
-  <tbody class='bg-secondary text-white text-center'>";
+  <tbody class=' text-dark text-center'  style='background-color:#A9A9A9;'>";
 
   $si_num=1;
 

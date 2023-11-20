@@ -24,7 +24,7 @@ include('../includes/connect.php');
 </head>
 <body>
     <div class="container">
-        <h3 class="text-center text-info mt-3">All Payments</h3>
+        <h3 class="text-center  mt-3"  style='color:#F05941;'>All Payments</h3>
     <table class="table table-bordered">
   <thead class="bg-info">
 
@@ -37,7 +37,7 @@ include('../includes/connect.php');
 
   if($num_of_rows>0)
   {
-    echo " <thead class='bg-info text-center'>
+    echo " <thead class='text-white text-center'  style='background-color:#F05941;'>
     <tr>
       <th scope='col'>SI no</th>
       <th scope='col'>Invoice Number</th>
@@ -48,7 +48,7 @@ include('../includes/connect.php');
    
     </tr>
   </thead>
-  <tbody class='bg-secondary text-white text-center'>";
+  <tbody class=' text-dark text-center'  style='background-color:#A9A9A9;'>";
 
   $si_num=1;
 
@@ -68,7 +68,7 @@ include('../includes/connect.php');
     <td> $amount_due</td>
     <td>   $payment_mode</td>
     <td>$order_date</td>
-    <td><a href='index.php?delete_payment=$payment_id' class='text-white' data-toggle='modal' data-target='#exampleModal'> <i class='fa-solid fa-trash-can'> </i> </a></td>
+    <td><a href='index.php?delete_payment=$payment_id' class='text-dark' data-toggle='modal' data-target='#exampleModal'> <i class='fa-solid fa-trash-can'> </i> </a></td>
   </tr>";
 
   $si_num++;

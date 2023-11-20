@@ -24,7 +24,7 @@ include('../includes/connect.php');
 </head>
 <body>
     <div class="container">
-        <h3 class="text-center text-info mt-3">All categories</h3>
+        <h3 class="text-center  mt-3 "  style="color:#F05941;">All categories</h3>
     <table class="table table-bordered">
   <thead class="bg-info">
 
@@ -37,7 +37,7 @@ include('../includes/connect.php');
 
   if($num_of_rows>0)
   {
-    echo " <thead class='bg-info text-center'>
+    echo " <thead class='text-white text-center' style='background-color:#F05941;'>
     <tr>
       <th scope='col'>S.no</th>
       <th scope='col'>Category Title</th>
@@ -46,7 +46,7 @@ include('../includes/connect.php');
    
     </tr>
   </thead>
-  <tbody class='bg-secondary text-white text-center'>";
+  <tbody class=' text-dark text-center' style='background-color:#A9A9A9;'>";
 
   $si_num=1;
 
@@ -58,8 +58,8 @@ include('../includes/connect.php');
     echo "   <tr>
     <td>$si_num</td>
     <td>$category_title</td>
-    <td><a href='index.php?edit_category=$category_id' class='text-white'><i class='fa-solid fa-pen-to-square'></i> </a></td>
-    <td><a href='index.php?delete_category=$category_id' class='text-white' data-toggle='modal' data-target='#exampleModal'> <i class='fa-solid fa-trash-can'> </i> </a></td>
+    <td><a href='index.php?edit_category=$category_id' class='text-dark'><i class='fa-solid fa-pen-to-square'></i> </a></td>
+    <td><a href='index.php?delete_category=$category_id' class='text-dark' data-toggle='modal' data-target='#exampleModal'> <i class='fa-solid fa-trash-can'> </i> </a></td>
   </tr>";
 
   $si_num++;
