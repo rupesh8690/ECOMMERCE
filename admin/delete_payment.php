@@ -2,15 +2,15 @@
 include('../functions/common_function.php');
 include('../includes/connect.php');
 
-if(isset($_GET['delete_payment'])) {
+if (isset($_GET['delete_payment'])) {
     $payment_id = $_GET['delete_payment'];
 
-  
-  
+
+
 
     // Perform the deletion operation
     $delete_query = "DELETE FROM user_payments WHERE payment_id = ?";
-    
+
     $stmt = $conn->prepare($delete_query);
     $stmt->bind_param("i", $payment_id);
 
@@ -24,7 +24,7 @@ if(isset($_GET['delete_payment'])) {
     }
 
     $stmt->close();
-} 
+}
 
 
 ?>

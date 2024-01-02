@@ -517,6 +517,13 @@ function total_cart_price()
 function get_user_order_detail()
 {
   global $conn;
+  /*$user_name = $_SESSION['username'];
+$get_details = "SELECT * FROM user_table WHERE username=?";
+$stmt = mysqli_prepare($conn, $get_details);
+mysqli_stmt_bind_param($stmt, "s", $user_name);
+mysqli_stmt_execute($stmt);
+$result_query = mysqli_stmt_get_result($stmt);
+ */
   $user_name=$_SESSION['username'];
   $get_details="select *from user_table where username='$user_name'";
   $result_query=mysqli_query($conn,$get_details);

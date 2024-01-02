@@ -1,6 +1,7 @@
 <?php
 include('../includes/connect.php'); 
 include('../functions/common_function.php');
+session_start();
 
 
 ?>
@@ -20,6 +21,8 @@ include('../functions/common_function.php');
 <body>
     <div class="container-fluid my-3"><!--container fluid class will take 100% of width--->
     <h2 class="text-center ">New User Registration</h2>
+
+    
     <div class="row d-flex align-items-center justify-content-center">
         <div class="col-lg-12 col-xl-6">
             <!---"col-lg-12" specifies the column behavior for large (lg) screens. 

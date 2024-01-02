@@ -2,15 +2,15 @@
 include('../functions/common_function.php');
 include('../includes/connect.php');
 
-if(isset($_GET['delete_category'])) {
+if (isset($_GET['delete_category'])) {
     $category_id = $_GET['delete_category'];
     echo $category_id;
-  
-  
+
+
 
     // Perform the deletion operation
     $delete_query = "DELETE FROM categories WHERE category_id = ?";
-    
+
     $stmt = $conn->prepare($delete_query);
     $stmt->bind_param("i", $category_id);
 
@@ -24,7 +24,7 @@ if(isset($_GET['delete_category'])) {
     }
 
     $stmt->close();
-} 
+}
 
 
 ?>

@@ -2,11 +2,11 @@
 include('../functions/common_function.php');
 include('../includes/connect.php');
 
-if(isset($_GET['delete_order'])) {
+if (isset($_GET['delete_order'])) {
     $order_id = $_GET['delete_order'];
     // Perform the deletion operation
     $delete_query = "DELETE FROM user_orders WHERE order_id = ?";
-    
+
     $stmt = $conn->prepare($delete_query);
     $stmt->bind_param("i", $order_id);
 
@@ -23,7 +23,7 @@ if(isset($_GET['delete_order'])) {
     }
 
     $stmt->close();
-} 
+}
 
 
 ?>

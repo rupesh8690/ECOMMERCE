@@ -2,11 +2,11 @@
 include('../functions/common_function.php');
 include('../includes/connect.php');
 
-if(isset($_GET['delete_brands'])) {
+if (isset($_GET['delete_brands'])) {
     $brand_id = $_GET['delete_brands'];
     // Perform the deletion operation
     $delete_query = "DELETE FROM brands WHERE brand_id = ?";
-    
+
     $stmt = $conn->prepare($delete_query);
     $stmt->bind_param("i", $brand_id);
 
@@ -23,7 +23,7 @@ if(isset($_GET['delete_brands'])) {
     }
 
     $stmt->close();
-} 
+}
 
 
 ?>
