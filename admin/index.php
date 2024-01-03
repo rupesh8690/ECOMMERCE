@@ -136,6 +136,10 @@ session_start();
             <a class="nav-link text-dark" href="index.php?list_users">List Users</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link text-dark" href="admin_registration.php">New Admin</a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link text-dark" href="logout.php">Logout</a>
           </li>
 

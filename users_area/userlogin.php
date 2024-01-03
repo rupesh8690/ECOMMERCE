@@ -61,61 +61,78 @@ session_start();
 
 <body>
 
-    <div class="container myclass bg-light pb-5 w-50 " style="margin-top:10%;">
-        <!--container fluid class will take 100% of width--->
-        <h2 class="text-center py-3 ">User Login</h2>
+    <?php
+    include('../includes/header.php');
+
+    ?>
+
+    <div class="py-5" style="margin-top: 5rem;">
 
 
-
-        <div class="row d-flex align-items-center justify-content-center">
-            <div class="col-lg-12 col-xl-6 ">
-                <!---"col-lg-12" specifies the column behavior for large (lg) screens. 
-            It means that the element will occupy the full width of its parent container, taking up 12 grid columns out of 12 available columns in a row. In other words, it spans the entire width of the container on large screens.
-
-          "col-xl-6" specifies the column behavior for extra-large (xl) screens. 
-            In this case, the element will occupy half of the available width in its parent container, taking up 6 out of 12 grid columns in a row. On extra-large screens, it will take up half of the container's width.
-           ---->
-
-                <form action="" method="post">
-                    <!---"multipart/form-data" is typically used when you want to submit files (e.g., images, documents) along with other form data.--->
-                    <div class="mb-3">
-                        <label for="user_name" class="form-label">User name</label>
-                        <input type="text" class="form-control " id="user_name" name="user_name"
-                            placeholder="Enter your username" autocomplete="off" required="required">
-
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <?php
+                    if (isset($_SESSION['status'])) {
+                        ?>
+                    <div class="alert alert-success">
+                        <h5>
+                            <?= $_SESSION['status']; ?>
+                        </h5>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="user_password">Password</label>
-                        <div class="d-flex align-items-center border ">
-                            <input type="password" class="form-control border-0 outline-0 " id="user_password"
-                                placeholder="Password" name="user_password" required="required">
-                            <!-- <img src="../image/eye.svg" alt="image" class="eye-pasword" id="eyeicon"> -->
+
+
+                    <?php
+                    unset($_SESSION['status']);
+                    }
+
+
+
+                    ?>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="text-center">Login Page</h5>
+
+                        </div>
+                        <div class="card-body p-4">
+                            <form action="" method="post">
+                                <label>User Name</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control " id="user_name" name="user_name"
+                                        placeholder="Enter your username" autocomplete="off" required="required">
+
+                                </div>
+
+                                <label> Password</label>
+                                <div class="form-group">
+                                    <input type="password" name="user_password" class="form-control"
+                                        placeholder=" password" required="required" id="user_password">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <a href="password-reset.php" style="color:#F05941;">Forgot
+                                        password</a>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <button type="submit" name="user_login" class="btn  w-100"
+                                        style="background-color: #F05941; color: #ffffff">Login</button>
+
+                                    <p class="small fw-bolder mt-2 pt-2 mb-0"><strong>Don't have an account? </strong><a
+                                            href="user_registration.php" class="text-decoration-none "
+                                            style="color:#F05941;">Register</a></p>
+                                </div>
+
+                            </form>
 
                         </div>
                     </div>
 
-
-                    <div class="mb-3">
-                        <!-- Button to trigger the login modal -->
-                        <a href="" style="color:#F05941;" data-bs-toggle="modal" data-bs-target="#loginModal">Forgot
-                            password</a>
-
-
-
-                    </div>
-
-
-                    <div class="mt-4 pt-2 ">
-                        <input type="submit" value="Login" name="user_login"
-                            class="rounded  mb-3 py-2  px-3  border-0 text-white" style="background-color:#F05941;">
-                        <p class="small fw-bolder mt-2 pt-2 mb-0"><strong>Don't have an account? </strong><a
-                                href="user_registration.php" class="text-decoration-none "
-                                style="color:#F05941;">Register</a></p>
-                    </div>
-
-                </form>
-
+                </div>
             </div>
 
         </div>
@@ -124,30 +141,7 @@ session_start();
 
 
 
-    <!-- Reset password model -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Reset Password</h5>
-                    <button type="button" class="btn-close border-0" data-bs-dismiss="modal"
-                        aria-label="Close">x</button>
-                </div>
-                <div class="modal-body">
 
-                    <form method="post" action="forgot-password.php">
-                        <div class="mb-3">
-
-                            <input type="email" class="form-control" name="useremail" placeholder="Enter your email">
-                        </div>
-
-                        <button type="submit" class="btn " name="password-reset"
-                            style="background-color:#F05941; color: #ffffff;">Send Link</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- <script>
     let eyeicon = document.getElementById("eyeicon");
     let user_password = document.getElementById("user_password");

@@ -73,55 +73,50 @@ if (isset($_POST['admin_login'])) {
 
 <body>
 
-    <div class="row">
-        <h2 class="text-center mt-3">Admin Login</h2>
-        <div class="col-md-6 mt-5 ">
-            <img src="../image/login.png" alt="" class="register_image">
-
-        </div>
-
-        <div class="col-md-6 ">
-            <form action="" method="post">
-
-                <div class="container mt-5">
-
-                    <div class="mb-4">
-                        <label for="admin_name" class="form-label mb-2">Admin name</label>
-                        <input type="text" class="form-control w-75" name="admin_name" placeholder="Enter your username"
-                            autocomplete="off" required="required">
-
-                    </div>
+    <div class="py-5" style="margin-top: 5rem;">
 
 
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="text-center">Admin Login Page</h5>
 
-                    <div class="mb-4">
-                        <label for="admin_password" class="form-label mb-2 ">Password</label>
-                        <div class="d-flex align-items-center">
-                            <input type="password" class="form-control w-75 outline-0" id="admin_password"
-                                placeholder="Password" name="admin_password" required="required">
-                            <!-- <img src="../image/eye.svg" alt="image" class="eye-pasword " id="eyeicon"> -->
+                        </div>
+                        <div class="card-body p-5">
+                            <form action="" method="post">
+                                <label>User Name</label>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control " name="admin_name"
+                                        placeholder="Enter your username" autocomplete="off" required="required">
+
+                                </div>
+
+                                <label> Password</label>
+                                <div class="form-group mb-3">
+                                    <input type="password" class="form-control" id="admin_password"
+                                        placeholder="Password" name="admin_password" required="required">
+                                </div>
+
+
+                                <div class="form-group mb-3">
+
+                                    <button type="submit" name="admin_login" class="btn  w-100"
+                                        style="background-color: #F05941; color: #ffffff">Login</button>
+
+
+                                </div>
+
+                            </form>
+
                         </div>
                     </div>
 
-
-
-                    <div class="mb-4">
-                        <input type="submit" value="Login" name="admin_login"
-                            class=" border-0 px-3 py-2 rounded text-white" style="background-color:#F05941;">
-
-                    </div>
-
-                    <div class="mb-4">
-                        <strong>Don't have an account?</strong> <a href="admin_registration.php"
-                            class=" text-danger font-weight-bold">Register </a>
-
-                    </div>
-
                 </div>
-            </form>
+            </div>
 
         </div>
-
     </div>
 
     <!-- <script>
