@@ -72,6 +72,7 @@ session_start();
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
+                    <!--show success message from password reset-->
                     <?php
                     if (isset($_SESSION['status'])) {
                         ?>
@@ -80,16 +81,25 @@ session_start();
                             <?= $_SESSION['status']; ?>
                         </h5>
                     </div>
+                    <?php
+                    unset($_SESSION['status']);
+                    }
+                    ?>
+                    <!-- // show success message when user registered successfully -->
+                    <?php
+                    if (isset($_SESSION['user_register'])) {
+                        ?>
+                    <div class="alert alert-success">
+                        <h5>
+                            <?= $_SESSION['user_register']; ?>
+                        </h5>
+                    </div>
 
 
 
                     <?php
-                    unset($_SESSION['status']);
-                    }
-
-
-
-                    ?>
+                    unset($_SESSION['user_register']);
+                    } ?>
                     <div class="card">
                         <div class="card-header">
                             <h5 class="text-center">Login Page</h5>

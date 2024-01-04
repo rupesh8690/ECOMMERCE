@@ -2,8 +2,8 @@
 include('../includes/connect.php');
 include('../functions/common_function.php');
 session_start();
-
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,6 @@ session_start();
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script>
-
         document.addEventListener('DOMContentLoaded', function () {
             let passInput = document.querySelector('#user_password');
             let confPassword = document.querySelector('#conf_password');
@@ -60,84 +59,104 @@ session_start();
                 }
             });
         });
-   
-</head >
-            <body>
-                <div class="container-fluid my-3"><!--container fluid class will take 100% of width--->
-                    <h2 class="text-center ">New User Registration</h2>
 
 
-                    <div class="row d-flex align-items-center justify-content-center">
-                        <div class="col-lg-12 col-xl-6">
-                            <!---"col-lg-12" specifies the column behavior for large (lg) screens.
-                            It means that the element will occupy the full width of its parent container, taking up 12 grid columns out of 12 available columns in a row. In other words, it spans the entire width of the container on large screens.
-
-                            "col-xl-6" specifies the column behavior for extra-large (xl) screens.
-                            In this case, the element will occupy half of the available width in its parent container, taking up 6 out of 12 grid columns in a row. On extra-large screens, it will take up half of the container's width.
-           ---->
 
 
+    </script>
+</head>
+
+<body>
+    <?php
+    include('../includes/header.php');
+
+    ?>
+    <div class="py-5" style="margin-top: 5rem;">
+
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="text-center">New User Registration</h5>
+
+                        </div>
+                        <div class="card-body p-4">
                             <form action="" method="post" enctype="multipart/form-data">
                                 <!---"multipart/form-data" is typically used when you want to submit files (e.g., images, documents) along with other form data.--->
-                                <div class="mb-3">
+
+                                <div class="form-group">
                                     <label for="user_name" class="form-label">User name</label>
                                     <input type="text" class="form-control" id="user_name" name="user_name"
                                         placeholder="Enter your username" autocomplete="off" required="required">
-
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="form-group">
                                     <label for="user_email" class="form-label">Email </label>
-                                    <input type="email" class="form-control" id="user_email" name="user_email" placeholder="Enter your email address"
-                                        autocomplete="off" required="required">
+                                    <input type="email" class="form-control" id="user_email" name="user_email"
+                                        placeholder="Enter your email address" autocomplete="off" required="required">
                                 </div>
 
-                                <div class="mb-3">
+
+                                <div class="form-group">
                                     <label for="user_image" class="form-label">User image</label>
                                     <input class="form-control   p-1 m-0" type="file" id="user_image" name="user_image">
                                 </div>
 
-                                <div class="mb-3">
+
+                                <div class="form-group">
                                     <label for="user_password">Password</label>
-                                    <input type="password" class="form-control" id="user_password" placeholder="Password" name="user_password" required="required">
+                                    <input type="password" class="form-control" id="user_password"
+                                        placeholder="Password" name="user_password" required="required">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="form-group">
                                     <label for="user_password">Confirm Password</label>
-                                    <input type="password" class="form-control" id="user_password" placeholder="Password" name="conf_user_password" required="required">
+                                    <input type="password" class="form-control" id="conf_password"
+                                        placeholder="Password" name="conf_user_password" required="required">
                                 </div>
-                                <div class="mb-3">
+
+                                <div class="form-group">
                                     <label for="user_address" class="form-label">Address </label>
-                                    <input type="text" class="form-control" id="user_address" placeholder="Enter your  address" name="user_address"
-                                        autocomplete="off" required="required">
+                                    <input type="text" class="form-control" id="user_address"
+                                        placeholder="Enter your  address" name="user_address" autocomplete="off"
+                                        required="required">
                                 </div>
 
-                                <div class="mb-3 ">
+                                <div class="form-group">
                                     <label for="user_number" class="form-label">Contact</label>
-                                    <input class="form-control   p-1 m-0" type="number" id="user_number" name="user_number"
-                                        placeholder="Enter your mobile number" required="required">
+                                    <input class="form-control   p-1 m-0" type="number" id="user_number"
+                                        name="user_number" placeholder="Enter your mobile number" required="required">
                                 </div>
 
-                                <div class="mt-4 pt-2 ">
-                                    <input type="submit" value="Register" name="register" class="form-control text-white mb-3 py-2  px-3  border-0" style="background-color:#F05941;">
-                                        <p class="small fw-bolder mt-2 pt-2 mb-0">Already have an account? <a href="userlogin.php" class="text-decoration-none text-danger">Login</a></p>
+                                <div class="form-group">
+
+                                    <input type="submit" value="Register" name="register"
+                                        class="form-control text-white mb-3 py-2  px-3  border-0"
+                                        style="background-color:#F05941;">
+                                    <p class="small fw-bolder mt-2 pt-2 mb-0">Already have an account? <a
+                                            href="userlogin.php" class="text-decoration-none text-danger">Login</a></p>
                                 </div>
 
                             </form>
 
                         </div>
-
                     </div>
 
-
                 </div>
+            </div>
 
-            </body>
-</html >
+        </div>
+    </div>
+
+
+</body>
+
+</html>
 
 <?php
-
-
 if (isset($_POST['register'])) {
     $user_name = $_POST['user_name'];
     $user_email = $_POST['user_email'];
@@ -159,11 +178,13 @@ if (isset($_POST['register'])) {
     if ($rows_count > 0) {
         echo "<script>alert('Username and email  already Exist')</script>";
         echo "<script>window.open('user_registration.php','_self')</script>";
+    }
 
-    } elseif ($user_password != $conf_user_password) {
-        echo "<script>alert('Password do not match!')</script>"; //doesn't (apostrophe was not working)
-        echo "<script>window.open('user_registration.php','_self')</script>";
-    } else {
+    // elseif ($user_password != $conf_user_password) {
+    //     echo "<script>alert('Password do not match!')</script>"; //doesn't (apostrophe was not working)
+    //     echo "<script>window.open('user_registration.php','_self')</script>";
+    // } 
+    else {
 
         // Move the uploaded file to the specified directory
         move_uploaded_file($user_image_tmp, "./user_images/$user_image");
@@ -172,10 +193,16 @@ if (isset($_POST['register'])) {
                 VALUES ('$user_name', '$user_email', '$hash_password', '$user_image', '$user_ip', '$user_address', '$user_number')";
         $result_query = mysqli_query($conn, $register_query);
 
+
         if ($result_query) {
-            echo "User registration successful.";
+            $_SESSION['user_register'] = "Registered Successfully";
+            echo '<script>window.location.href = "userlogin.php";</script>';
+            // echo "User registration successful.";
         } else {
-            echo "Error inserting user data into the database.";
+            // echo "Error inserting user data into the database.";
+            $_SESSION['user_register'] = "Something went wrong!";
+            echo '<script>window.location.href = "user_registration.php";</script>';
+
         }
 
 

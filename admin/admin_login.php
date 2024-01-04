@@ -6,13 +6,15 @@ if (isset($_POST['admin_login'])) {
     $admin_name = trim($_POST['admin_name']);
     $admin_password = trim($_POST['admin_password']);
 
-    $select_query = "select * from `admin_table` where admin_name='$admin_name'";
+    $select_query = "SELECT * FROM `admin_table` WHERE admin_name='$admin_name'";
     $result = mysqli_query($conn, $select_query);
     $row_count = mysqli_num_rows($result);
 
-    $row_data = mysqli_fetch_assoc($result); // This is a PHP function used to fetch a row of data from a MySQL database result set as an associative array 
+    $row_data = mysqli_fetch_assoc($result);
+
+   
+
     if ($row_count > 0) {
-        // if (password_verify($admin_password, $row_data['admin_password'])) {
         if ($admin_password == $row_data['admin_password']) {
             // Login successful
             $_SESSION['admin_name'] = $admin_name;
@@ -20,12 +22,18 @@ if (isset($_POST['admin_login'])) {
             echo "<script>window.open('index.php','_self')</script>";
         } else {
             // Password does not match
-            echo "<script>alert('Invalid credentials')</script>";
+            echo "<script>alert('Invalid credentials');</script>";
+            echo "<script>window.open('admin_login.php','_self')</script>";
+            $error_message = "Invalid credentials";
         }
-
+    } else {
+        // No matching admin found
+        echo "<script>alert('Admin not found');</script>";
+        echo "<script>window.open('admin_login.php','_self')</script>";
+       
     }
-
 }
+
 
 // else{
 //     echo "<script>alert('No user Exist! Register first to sign in')</script>";
@@ -73,13 +81,16 @@ if (isset($_POST['admin_login'])) {
 
 <body>
 
+
     <div class="py-5" style="margin-top: 5rem;">
 
 
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                <?php
+
+                  
+                    <?php
                     if (isset($_SESSION['admin_register'])) {
                         ?>
                     <div class="alert alert-success">
