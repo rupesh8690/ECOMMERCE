@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+
 include('../includes/connect.php');
 if ($_POST['insert_product']) {
     $product_title = $_POST['product_title'];
@@ -103,7 +104,10 @@ if ($_POST['insert_product']) {
 
 </head>
 
-<body class="">
+<body>
+
+
+
     <div class="container cont-bg ">
         <h1 class="text-center mt-3">Insert Products</h1>
         <!--form-->
@@ -206,5 +210,6 @@ if ($_POST['insert_product']) {
         </form>
     </div>
 </body>
+
 
 </html>

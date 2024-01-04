@@ -26,6 +26,16 @@ if (isset($_POST['insert_brand'])) {
 
 ?>
 
+<?php
+ if (!isset($_SESSION['admin_name']))
+ {
+
+  // echo 'login first';
+  // echo "<a href='admin_login.php'><button type='button' class='btn btn-primary'  style='background-color: #F05941; color: #ffffff'>Click here to login</button></a>";
+
+ }
+else{
+?>
 <h2 class="text-center my-3">Insert Brands</h2>
 <form action=" " method="post" class="mb-2">
   <!---input group--->
@@ -48,4 +58,4 @@ if (isset($_POST['insert_brand'])) {
 
 
 
-</form>
+</form> <?php } ?>

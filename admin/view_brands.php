@@ -21,12 +21,19 @@ include('../includes/connect.php');
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>View Categories</title>
+  <title>View Brands</title>
 
 
 </head>
 
 <body>
+<?php
+  if (!isset($_SESSION['admin_name'])) {
+
+    // echo 'login first';
+    // echo "<a href='admin_login.php'><button type='button' class='btn btn-primary'  style='background-color: #F05941; color: #ffffff'>Click here to login</button></a>";
+  
+  } else { ?>
   <div class="container">
     <h3 class="text-center  mt-3" style='color:#F05941;'>All Brands</h3>
     <table class="table table-bordered">
@@ -109,6 +116,9 @@ include('../includes/connect.php');
   
 
   ?>
+
+<?php } ?>
+
 </body>
 
 </html>

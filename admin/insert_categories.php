@@ -23,7 +23,13 @@ if (isset($_POST['insert_cat'])) {
 
 ?>
 
+<?php
+  if (!isset($_SESSION['admin_name'])) {
 
+    // echo 'login first';
+    // echo "<a href='admin_login.php'><button type='button' class='btn btn-primary'  style='background-color: #F05941; color: #ffffff'>Click here to login</button></a>";
+  
+  } else { ?>
 <h2 class="text-center my-3">Insert Categories</h2>
 
 
@@ -49,3 +55,5 @@ if (isset($_POST['insert_cat'])) {
 
 
 </form>
+
+<?php } ?>

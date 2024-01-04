@@ -1,6 +1,6 @@
 <?php
 include('../includes/connect.php');
-
+session_start();
 if (isset($_POST['register'])) {
     $admin_name = $_POST['admin_name'];
     $admin_email = $_POST['admin_email'];
@@ -27,12 +27,20 @@ if (isset($_POST['register'])) {
         $result_query = mysqli_query($conn, $register_query);
 
         if ($result_query) {
-            echo "<script>alert('Registered Successfully')</script>";
-            echo "<script>window.open('admin_login.php', '_self')</script>";
+            $_SESSION['admin_register'] = "Registered Successfully";
+            header("Location: admin_login.php");
+
+            exit(0);
+            // echo "<script>alert('Registered Successfully')</script>";
+            // echo "<script>window.open('admin_login.php', '_self')</script>";
 
         } else {
-            echo "<script>alert('Admin not Registered ')</script>";
-            echo "<script>window.open('admin_registered.php', '_self')</script>";
+            // echo "<script>alert('Admin not Registered ')</script>";
+            // echo "<script>window.open('admin_registered.php', '_self')</script>";
+            $_SESSION['admin_register'] = "Something went worong!1";
+            header("Location: admin_registration.php");
+
+            exit(0);
         }
 
 
@@ -61,6 +69,61 @@ if (isset($_POST['register'])) {
             object-fit: contain;
         }
     </style>
+
+    <script>
+        // function passwordCheck() {
+        //     let password = document.querySelector('#user_password').value;
+        //     if (password.length < 6) {
+        //         console.log("Password must be at least 6 characters long");
+        //         alert("Password must be at least 6 characters long");
+        //         return false; // Prevent form submission if the condition is not met
+        //     }
+        // }
+
+        document.addEventListener('DOMContentLoaded', function() {
+    let passInput = document.querySelector('#user_password');
+    let confPassword = document.querySelector('#conf_password');
+    let form = document.querySelector('form');
+
+    passInput.addEventListener("input", function () {
+        let finalValue = this.value;
+        if (finalValue.length < 6) {
+            passInput.setCustomValidity('Password must be at least 6 characters long');
+        } else {
+            passInput.setCustomValidity('');
+        }
+        // Check if the passwords match whenever the user types in the password field
+        if (finalValue !== confPassword.value) {
+            confPassword.setCustomValidity("Passwords don't match");
+        } else {
+            confPassword.setCustomValidity('');
+        }
+    });
+
+    confPassword.addEventListener('input', function () {
+        // Check if the passwords match whenever the user types in the confirm password field
+        if (passInput.value !== confPassword.value) {
+            confPassword.setCustomValidity("Passwords don't match");
+        } else {
+            confPassword.setCustomValidity('');
+        }
+    });
+
+    form.addEventListener('submit', function(event) {
+        let finalValue = passInput.value;
+        if (finalValue.length < 6 || passInput.value !== confPassword.value) {
+            event.preventDefault(); // Prevent form submission
+            if (finalValue.length < 6) {
+                alert("Password must be at least 6 characters long");
+            } else {
+                alert("Passwords don't match");
+            }
+        }
+    });
+});
+
+    </script>
+
     <!--bootstrap css link--->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -99,14 +162,14 @@ if (isset($_POST['register'])) {
 
                     <div class="mb-4">
                         <label for="user_password" class="form-label mb-2 ">Confirm Password</label>
-                        <input type="password" class="form-control w-75" id="user_password" placeholder="Password"
+                        <input type="password" class="form-control w-75" id="conf_password" placeholder="Password"
                             name="conf_admin_password" required="required">
                     </div>
 
                     <div class="mb-4">
                         <input type="submit" value="Register" name="register"
                             class="text-white border-0 px-3 py-2 rounded " style="background-color:#F05941;">
-
+                        <!-- onclick="return passwordCheck()" -->
                     </div>
 
                     <div class="mb-4">

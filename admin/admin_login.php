@@ -79,8 +79,23 @@ if (isset($_POST['admin_login'])) {
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
+                <?php
+                    if (isset($_SESSION['admin_register'])) {
+                        ?>
+                    <div class="alert alert-success">
+                        <h5>
+                            <?= $_SESSION['admin_register']; ?>
+                        </h5>
+                    </div>
+
+
+
+                    <?php
+                    unset($_SESSION['admin_register']);
+                    } ?>
                     <div class="card">
                         <div class="card-header">
+
                             <h5 class="text-center">Admin Login Page</h5>
 
                         </div>

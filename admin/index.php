@@ -59,7 +59,8 @@ session_start();
 
 <body>
 
-  </script>
+
+
 
   <div class="container-fluid p-0">
 
@@ -98,6 +99,16 @@ session_start();
 
     <!--creating navbr--->
 
+    <?php
+ if (!isset($_SESSION['admin_name']))
+ {
+
+  // echo 'login first';
+  echo "<a href='admin_login.php'><button type='button' class='btn btn-primary'  style='background-color: #F05941; color: #ffffff'>Click here to login</button></a>";
+
+ }
+else{
+?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <img src="../image/logo.png" alt="" class="logo">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -147,7 +158,7 @@ session_start();
         </ul>
 
       </div>
-    </nav>
+    </nav> <?php  } ?>
     <!--navbar ended--->
 
 
