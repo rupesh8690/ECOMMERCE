@@ -265,16 +265,22 @@ session_start();
       </div>
     </div>
 
-
-    <!--Footer-->
-
-    <!---includeing footer--->
-
-    <?php
-    include("../includes/footer.php");
-
-    ?>
   </div>
+  <!--Footer-->
+
+  <!---includeing footer--->
+
+  <div class="row">
+    <div class="col-md-12">
+      <?php
+      include("../includes/footer.php");
+
+      ?>
+
+    </div>
+  </div>
+
+
 
 
 

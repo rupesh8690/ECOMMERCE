@@ -4,6 +4,7 @@
 
 // include('./includes/connect.php');
 error_reporting(0);
+session_start ();
 //getting products
 
 function getproducts()
@@ -407,6 +408,7 @@ function cart()
 {
     if (isset($_GET['cart_id'])) {
         global $conn;
+        // $user_name=$_SESSION['username'];
         $ip_address = getIPAddress();
         $get_product_id = $_GET['cart_id'];
 
