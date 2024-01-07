@@ -62,6 +62,7 @@ include('../includes/connect.php');
           echo " <thead class=' text-white text-center' style='background-color:#F05941;'>
     <tr>
       <th scope='col'>SI no</th>
+      <th scope='col'>User Id</th>
       <th scope='col'>Username</th>
       <th scope='col'>User Email</th>
       <th scope='col'>user Image</th>
@@ -76,7 +77,7 @@ include('../includes/connect.php');
           $si_num = 1;
 
           while ($data = mysqli_fetch_assoc($result_query)) {
-
+            $user_id=$data['user_id'];
             $user_name = $data['username'];
             $user_email = $data['user_email'];
             $user_image = $data['user_image'];
@@ -86,6 +87,7 @@ include('../includes/connect.php');
 
             echo "   <tr>
     <td>$si_num</td>
+    <td>$user_id</td>
     <td>    $user_name</td>
     <td> $user_email</td>
     <td><img src='../users_area/user_images/$user_image' class='user_img'></td>

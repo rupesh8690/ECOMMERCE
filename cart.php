@@ -191,6 +191,9 @@ session_start();
 
             <!---php code begin--->
             <?php
+
+            //creating an empty array
+            $product_ids = array();
             global $conn;
             $get_ip_address = getIPAddress();
             $total_price = 0;
@@ -214,24 +217,32 @@ session_start();
 </thead>
 <tbody>";
 
+
               while ($row = mysqli_fetch_array($result)) {
 
-                $product_id = $row['product_id'];
+                
+
+                $product_id = $row["product_id"];
                 $select_product = "SELECT * FROM products WHERE product_id=$product_id";
                 $result_product = mysqli_query($conn, $select_product);
                 // $total=mysqli_num_rows($result_product);
             
+
+
                 while ($product_result = mysqli_fetch_assoc($result_product)) {
 
-
+                  array_push($product_ids, $product_id);
                   $product_title = $product_result['product_title'];
                   $product_image = $product_result['product_image1'];
                   $product_price = $product_result['product_price'];
+                  $product_id = $product_result['product_id'];
 
                   $product_price_array = array($product_result['product_price']); //[200,400]
                   $product_values = array_sum($product_price_array); //[600]
                   $total_price += $product_values; //600
             
+
+
 
 
                   ?>
@@ -241,44 +252,24 @@ session_start();
                 <?php echo $product_title ?>
               </th>
               <td><img src='admin/product_images/<?php echo $product_image ?>' class='cart_image'></td>
-              <!-- <td><input type='text' name='qty' class="form-input w-50"></td> -->
-                    <?php
 
-                    $formatted_price = number_format($product_price);
-                    $formatted_total_price = number_format($total_price);
-                    //working for update cart 
-                    // if(isset($_POST['update_cart']))
-                    // {
-              
-                    //   $get_ip_address = getIPAddress(); 
-                    //   $quantities=$_POST['qty'];
-                    //   $update_cart_query="update `cart_details` set quantity=$quantities where ip_address='$get_ip_address' ";
-                    //   $myresult_cart= mysqli_query($conn, $update_cart_query);
-                    //   $total_price=$total_price*$quantities;
-              
-                    //   if($myresult_cart)
-                    //   {
-                    //     echo "<script>alert('updated successfully')</script>";
-                    //   }
-                    //   else
-                    //   {
-                    //     echo "<script>alert('Error: " . mysqli_error($conn) . "')</script>";
-              
-                    //   }
-              
-                    // }
-                    ?>
-                    <td>
-                      <?php echo $formatted_price ?>
-                    </td>
-                    <td><input type='checkbox' name='removeitem[]' value="<?php echo $product_id ?>"> </td>
-                    <!-- <td><input type='submit' value='update cart' name='update_cart' class='bg-info px-3 py-2 border-0 mx-3' ></td> -->
-                    <td><input type='submit' value='Remove item' name='remove_cart'
-                        class=' text-white px-3 py-2 border-0 mx-3 rounded' style='background-color:#F05941;'></td>
-                  </tr>
+              <?php
+
+              $formatted_price = number_format($product_price);
+              $formatted_total_price = number_format($total_price);
+
+              ?>
+              <td>
+                <?php echo $formatted_price ?>
+              </td>
+              <td><input type='checkbox' name='removeitem[]' value="<?php echo $product_id ?>"> </td>
+
+              <td><input type='submit' value='Remove item' name='remove_cart'
+                  class=' text-white px-3 py-2 border-0 mx-3 rounded' style='background-color:#F05941;'></td>
+            </tr>
 
 
-                  <?php
+            <?php
                 }
               }
 
@@ -293,6 +284,7 @@ session_start();
 
           <div class="d-flex m-auto ">
             <?php
+            $encoded_array = http_build_query(array('my_array' => $product_ids));
             global $conn;
 
             $get_ip_address = getIPAddress();
@@ -304,11 +296,14 @@ session_start();
             if (mysqli_num_rows($result) > 0) {
               echo "  <h4 class='mt-2'>Sub Total : <strong class='text-dark' >  $formatted_total_price /-</strong></h4>
   <a href='index.php'class=' px-3 border-0 mt-2 mb-2 text-white text-decoration-none rounded-top rounded-bottom' style='background-color:#F05941;'>Continue shopping</a>
-  <a href='./users_area/checkout.php?total_price=$total_price' class=' px-3 border-0 mt-2 mb-2 mx-2 text-dark text-decoration-none rounded-top rounded-bottom' style='background-color:#A9A9A9;'>Checkout</a>";
+  <a href='./users_area/checkout.php?total_price=$total_price&$encoded_array ' class=' px-3 border-0 mt-2 mb-2 mx-2 text-dark text-decoration-none rounded-top rounded-bottom' style='background-color:#A9A9A9;'>Checkout</a>";
             } else {
               echo "<a href='index.php' class='px-3 border-0 mt-2 mb-2 text-dark text-decoration-none rounded-top rounded-bottom' style='background-color:#F05941;'>Continue shopping</a>";
 
             }
+
+           
+
             ?>
 
 

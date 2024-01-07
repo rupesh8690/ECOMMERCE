@@ -50,6 +50,8 @@ include('../includes/connect.php');
           echo " <thead class=' text-white text-center'  style='background-color:#F05941;'s>
     <tr>
       <th scope='col'>SI no</th>
+      <th scope='col'>User Id</th>
+      <th scope='col'>Items name</th>
       <th scope='col'>Due Amount</th>
       <th scope='col'>Invoice Number</th>
       <th scope='col'>Total Products</th>
@@ -65,7 +67,9 @@ include('../includes/connect.php');
 
           while ($data = mysqli_fetch_assoc($result_query)) {
             $order_id = $data['order_id'];
+            $user_id=$data['user_id'];
             $amount_due = $data['amount_due'];
+            $product_title=$data['items_name'];
             $invoice_number = $data['invoice_number'];
             $total_products = $data['total_products'];
             $order_date = $data['order_date'];
@@ -74,6 +78,8 @@ include('../includes/connect.php');
 
             echo "   <tr>
     <td>$si_num</td>
+    <td>$user_id</td>
+    <td>$product_title</td>
     <td> $amount_due</td>
     <td>$invoice_number</td>
     <td>$total_products</td>

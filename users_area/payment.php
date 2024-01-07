@@ -41,6 +41,19 @@ include('../includes/connect.php');
     if (isset($_GET['total_price'])) {
         $total_price = $_GET['total_price'];
     }
+
+    //accessing array from the url
+    
+    if (isset($_GET['my_array'])) {
+        $product_ids = $_GET['my_array'];
+    }
+
+    $encoded_array = http_build_query(array('my_array' => $product_ids));
+
+    // The http_build_query function in PHP is used to construct a URL-encoded query string from an array or an object.
+    
+
+
     $user_ip = getIPAddress();
     $user_query = "select * from user_table where user_ip='$user_ip'";
     $result = mysqli_query($conn, $user_query);
@@ -90,7 +103,8 @@ include('../includes/connect.php');
                 window.location.href = 'khalti-page.php'; // Replace with the actual URL
             } else if (selectedOptionValue === '3') {
                 var user_id = <?php echo json_encode($user_id); ?>;
-                window.location.href = 'order.php?user_id=' + user_id;
+                window.location.href = 'order.php?user_id=' + user_id + '&' + '<?php echo $encoded_array; ?>';
+
 
             }
         });

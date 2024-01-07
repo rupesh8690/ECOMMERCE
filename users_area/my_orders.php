@@ -32,7 +32,7 @@
       $row = mysqli_fetch_array($result);
       $user_id = $row['user_id'];
 
-      //selecting data from user_orders on the user of userid
+      //selecting data from user_orders on the basis of userid
       
       $select_user_orders = "SELECT * FROM `user_orders` where user_id=$user_id";
       $result_order = mysqli_query($conn, $select_user_orders);
@@ -43,7 +43,9 @@
    <tr>
      <th scope='col' class='text-white'>SI no</th>
      <th scope='col' class='text-white'>Amount Due</th>
+     <th scope='col' class='text-white'>Items Name</th>
      <th scope='col' class='text-white'>Total Products</th>
+   
      <th scope='col' class='text-white'>Date</th>
      <th scope='col' class='text-white'>Complete/Incomplete</th>
      <th scope='col' class='text-white'>Status</th>
@@ -57,6 +59,7 @@
       while ($row_data = mysqli_fetch_array($result_order)) {
 
         $amount = $row_data['amount_due'];
+        $items_name=$row_data['items_name'];
         $total_products = $row_data['total_products'];
         $order_date = $row_data['order_date'];
         $status = $row_data['order_status'];
@@ -74,6 +77,7 @@
    <tr>
     <td> $si</th>
     <td> $amount </td>
+    <td> $items_name </td>
     <td> $total_products </td>
     <td> $order_date </td>
     <td> $status </td> ";

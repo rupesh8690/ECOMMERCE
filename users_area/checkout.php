@@ -7,6 +7,11 @@ if (isset($_GET['total_price'])) {
   $total_price = $_GET['total_price'];
 
 }
+//accessing array from the url
+if (isset($_GET['my_array'])) {  
+  $product_ids=$_GET['my_array'];
+ }
+
 ?>
 
 <!DOCTYPE html>
@@ -162,14 +167,23 @@ if (isset($_GET['total_price'])) {
 
           } else {
             include('payment.php');
+            
           }
+
+         
           ?>
+
+
+
       
       </div>
 
     </div>
-
-
+<?php
+ foreach ($product_ids as $value) {
+  echo $value . '<br>';
+}
+ ?>
 
 
     <!--Footer-->

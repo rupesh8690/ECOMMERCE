@@ -2,6 +2,19 @@
 include('../functions/common_function.php');
 include('../includes/connect.php');
 
+
+if (isset($_GET['my_array'])) {
+    $product_title = " ";
+    $product_ids = $_GET['my_array'];
+    foreach ($product_ids as $value) {
+        $select_product_query = "select product_title from products where product_id=$value";
+        $result_product_query = mysqli_query($conn, $select_product_query);
+        $row = mysqli_fetch_array($result_product_query);
+        // Concatenate product titles
+        $product_title .= $row["product_title"] . "/ ";
+
+    }
+}
 if (isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
     //getting total item and total price of all items
@@ -53,8 +66,8 @@ if ($quantity == 0) {
 
 //inserting data to users_table
 
-$insert_orders = "INSERT INTO `user_orders` (`user_id`, `amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`)
-                VALUES ($user_id, $subtotal, $invoice_number, $count_products, NOW(), '$status')";
+$insert_orders = "INSERT INTO `user_orders` (`user_id`,`items_name`,`amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`)
+                VALUES ($user_id,'$product_title', $subtotal, $invoice_number, $count_products, NOW(), '$status')";
 
 
 $result_user_order = mysqli_query($conn, $insert_orders);
@@ -64,7 +77,7 @@ if ($result_user_order) {
     echo "<script>window.open('profile.php','_self') </script>";
 
 } else {
-    echo "<script>alert('Some problem occured')</script>";
+    echo "<script>alert('Some problem occured ');</script>";
 }
 
 //inseting to orders pending
