@@ -40,6 +40,17 @@ session_start();
     .second-nav-bg {
       background-color: #A9A9A9;
     }
+    .nav-link
+    {
+      font-size: 1.2rem;
+      font-family: sans-serif;
+    }
+    .card{
+      transition: 1s;;
+    }
+    .card:hover{
+      box-shadow: 0 8px 16px black;
+    }
   </style>
 
 
@@ -87,7 +98,7 @@ session_start();
 
 
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Contact</a>
+            <a class="nav-link text-white" href="contact.php">Contact</a>
           </li>
 
           <li class="nav-item">
@@ -117,7 +128,16 @@ session_start();
     </nav>
     <!--calling cart function--->
     <?php
-    cart();
+
+
+    if (isset($_GET['cart_id'])) {
+      if (!isset($_SESSION['username'])) {
+        echo "<script> alert('Sign in or create an account'); </script>";
+      } else {
+        cart();
+      }
+
+    }
     ?>
     <!--Second child-->
     <nav class="navbar  navbar-expand-lg navbar-dark second-nav-bg " style="margin-top: 86px;">
@@ -167,6 +187,7 @@ session_start();
         Shop the latest trends and discover quality products at Mithila Store
       </p>
     </div>
+
 
 
     <!--fouth class-->

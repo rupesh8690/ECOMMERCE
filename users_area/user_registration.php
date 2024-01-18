@@ -167,7 +167,7 @@ if (isset($_POST['register'])) {
     $user_image = $_FILES['user_image']['name'];
     $user_image_tmp = $_FILES['user_image']['tmp_name'];
 
-    $user_ip = getIPAddress();
+   
     $hash_password = password_hash($user_password, PASSWORD_DEFAULT);
 
     //checking whetheer user exist or not

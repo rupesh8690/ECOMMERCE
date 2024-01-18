@@ -1,7 +1,7 @@
 <?php
 include('../functions/common_function.php');
 include('../includes/connect.php');
-
+@session_start();
 ?>
 
 <!DOCTYPE html>
@@ -54,12 +54,24 @@ include('../includes/connect.php');
     
 
 
-    $user_ip = getIPAddress();
-    $user_query = "select * from user_table where user_ip='$user_ip'";
+    //accessing user's email
+    
+    global $conn;
+
+    $user_name = $_SESSION['username'];
+    $select_email_query = "SELECT user_email FROM user_table WHERE username='$user_name'";
+    $result_email_query = mysqli_query($conn, $select_email_query);
+    $row_email = mysqli_fetch_array($result_email_query);
+    $user_email = $row_email['user_email'];
+
+    //accessing user id from user email
+    $user_query = "select * from user_table where user_email='$user_email'";
     $result = mysqli_query($conn, $user_query);
     $run_query = mysqli_fetch_array($result); //both array and assoc are very similar but using array we can access by index like 1,2 and column name as well
-    
     $user_id = $run_query['user_id'];
+    
+ 
+
 
 
 
@@ -76,6 +88,8 @@ include('../includes/connect.php');
                 <option value="1">Esewa</option>
                 <option value="2">Khalti</option>
                 <option value="3">Offline</option>
+               
+
             </select>
         </div>
 

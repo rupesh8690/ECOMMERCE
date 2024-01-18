@@ -41,6 +41,17 @@ session_start();
     .second-nav-bg {
       background-color: #A9A9A9;
     }
+    .nav-link
+    {
+      font-size: 1.2rem;
+      font-family: sans-serif;
+    }
+    .card{
+      transition: 1s;;
+    }
+    .card:hover{
+      box-shadow: 0 8px 16px black;
+    }
   </style>
 
 

@@ -47,6 +47,11 @@ session_start();
       background-color: #A9A9A9;
     }
 
+    .nav-link {
+      font-size: 1.2rem;
+      font-family: sans-serif;
+    }
+
     /* .background_image
         {
           background-image: url("image/nocart.jpg");
@@ -56,9 +61,14 @@ session_start();
   </style>
 
 
+
 </head>
 
 <body>
+
+  <!-- javascript to calculate total cost on the basis of quantitiy -->
+
+
   <!--Navbar-->
   <div class="container-fluid p-0">
 
@@ -99,7 +109,7 @@ session_start();
       </li> -->
 
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Contact</a>
+            <a class="nav-link text-white" href="contact.php">Contact</a>
           </li>
 
           <li class="nav-item">
@@ -112,7 +122,9 @@ session_start();
 
           <li class="nav-item">
             <a class="nav-link text-white" href="#">
-              <?php total_cart_price(); ?>
+              <p class="total-nav">
+                <?php total_cart_price(); ?>
+              </p>
             </a>
           </li>
 
@@ -190,92 +202,97 @@ session_start();
 
 
             <!---php code begin--->
-            <?php
+            <!-- ... Existing PHP code ... -->
 
-            //creating an empty array
+            <?php
+            // creating an empty array
             $product_ids = array();
+            $product_prices = array();
             global $conn;
-            $get_ip_address = getIPAddress();
+
             $total_price = 0;
+
+            // getting user's email
+            $user_email = userEmail();
             // Fetch the cart items for the given IP address
-            $cart_query = "SELECT * FROM `cart_details` WHERE ip_address='$get_ip_address'";
+            $cart_query = "SELECT * FROM `cart_details` WHERE user_email='$user_email'";
             $result = mysqli_query($conn, $cart_query);
 
-
             if (mysqli_num_rows($result) > 0) {
-              echo "  <thead>
-  <tr>
-    <th scope='col'>Product Title</th>
-    <th scope='col'>Product Image</th>
-
-    <th scope='col'>Total price</th>
-    <th scope='col'>Remove</th>
-    <th scope='col'>Operation</th>
-
-    
-  </tr>
+              echo "<thead>
+    <tr>
+        <th scope='col'>Product Title</th>
+        <th scope='col'>Product Image</th>
+        <th scope='col'>Unit Price</th>
+        <th scope='col'>Quantity</th>
+        <th scope='col'>Total Amount</th>
+        <th scope='col'>Remove</th>
+        <th scope='col'>Operation</th>
+    </tr>
 </thead>
 <tbody>";
 
-
               while ($row = mysqli_fetch_array($result)) {
 
-                
 
+
+                $total_amount_default = $product_result['product_price']; // Set default total amount to unit price
                 $product_id = $row["product_id"];
                 $select_product = "SELECT * FROM products WHERE product_id=$product_id";
                 $result_product = mysqli_query($conn, $select_product);
-                // $total=mysqli_num_rows($result_product);
-            
-
 
                 while ($product_result = mysqli_fetch_assoc($result_product)) {
 
-                  array_push($product_ids, $product_id);
+                  $default_quantity = 1;
+                  $total_amount_default = $product_result['product_price'] * $default_quantity; // Set default total amount to unit price * quantity
+            
                   $product_title = $product_result['product_title'];
                   $product_image = $product_result['product_image1'];
+
                   $product_price = $product_result['product_price'];
+                  array_push($product_prices, $product_price);
+
                   $product_id = $product_result['product_id'];
+                  array_push($product_ids, $product_id);
 
-                  $product_price_array = array($product_result['product_price']); //[200,400]
-                  $product_values = array_sum($product_price_array); //[600]
-                  $total_price += $product_values; //600
-            
-
-
-
+                  $product_price_array = array($product_result['product_price']);
+                  $product_values = array_sum($product_price_array);
+                  $total_price += $product_values;
 
                   ?>
+                  <tr>
+                    <th>
+                      <?php echo $product_title ?>
+                    </th>
+                    <td><img src='admin/product_images/<?php echo $product_image ?>' class='cart_image'></td>
 
-            <tr>
-              <th>
-                <?php echo $product_title ?>
-              </th>
-              <td><img src='admin/product_images/<?php echo $product_image ?>' class='cart_image'></td>
+                    <?php
+                    $formatted_price = number_format($product_price);
+                    $formatted_total_price = number_format($total_price);
+                    ?>
 
-              <?php
-
-              $formatted_price = number_format($product_price);
-              $formatted_total_price = number_format($total_price);
-
-              ?>
-              <td>
-                <?php echo $formatted_price ?>
-              </td>
-              <td><input type='checkbox' name='removeitem[]' value="<?php echo $product_id ?>"> </td>
-
-              <td><input type='submit' value='Remove item' name='remove_cart'
-                  class=' text-white px-3 py-2 border-0 mx-3 rounded' style='background-color:#F05941;'></td>
-            </tr>
+                    <td>
+                      <?php echo $formatted_price; ?>
+                    </td>
+                    <td>
+                      <?php echo "<input type='number' min=1 class='qty-input text-center' value='$default_quantity'>"; ?>
+                    </td>
+                    <td>
+                      <?php echo "<input type='text' class='total-price-input' value='$total_amount_default' readonly disabled>"; ?>
 
 
-            <?php
+                    </td>
+
+                    <td><input type='checkbox' name='removeitem[]' value="<?php echo $product_id ?>"> </td>
+                    <td><input type='submit' value='Remove item' name='remove_cart'
+                        class='text-white px-3 py-2 border-0 mx-3 rounded' style='background-color:#F05941;'></td>
+                  </tr>
+                  <?php
                 }
               }
 
+              $encoded_prices = json_encode($product_prices);
             } else {
-
-              // echo"<marquee>No cart is available </marquee> ";
               echo "<h2 class='text-center text-danger'> No cart is available </h2>";
             }
             ?>
@@ -286,29 +303,77 @@ session_start();
             <?php
             $encoded_array = http_build_query(array('my_array' => $product_ids));
             global $conn;
+            $user_email = userEmail();
 
-            $get_ip_address = getIPAddress();
-            // Fetch the cart items for the given IP address
-            $cart_query = "SELECT * FROM `cart_details` WHERE ip_address='$get_ip_address'";
+            $cart_query = "SELECT * FROM `cart_details` WHERE user_email='$user_email'";
             $result = mysqli_query($conn, $cart_query);
 
-
             if (mysqli_num_rows($result) > 0) {
-              echo "  <h4 class='mt-2'>Sub Total : <strong class='text-dark' >  $formatted_total_price /-</strong></h4>
-  <a href='index.php'class=' px-3 border-0 mt-2 mb-2 text-white text-decoration-none rounded-top rounded-bottom' style='background-color:#F05941;'>Continue shopping</a>
-  <a href='./users_area/checkout.php?total_price=$total_price&$encoded_array ' class=' px-3 border-0 mt-2 mb-2 mx-2 text-dark text-decoration-none rounded-top rounded-bottom' style='background-color:#A9A9A9;'>Checkout</a>";
-            } else {
+              echo "  <h4 class='mt-2'>Sub Total : <strong class='text-dark totalPrice ' >  $formatted_total_price /-</strong></h4>
+            <a href='index.php'class=' px-3 border-0 mt-2 mb-2 text-white text-decoration-none rounded-top rounded-bottom' style='background-color:#F05941;'>Continue shopping</a>
+           <a href='./users_area/checkout.php?total_price=$total_price&$encoded_array ' class=' px-3 border-0 mt-2 mb-2 mx-2 text-dark text-decoration-none rounded-top rounded-bottom' style='background-color:#A9A9A9;'>Checkout</a>";
+          //  <a href='#' class='px-3 border-0 mt-2 mb-2 mx-2 text-dark text-decoration-none rounded-top rounded-bottom checkout-link' style='background-color:#A9A9A9;'>Checkout</a>";  
+          } else {
               echo "<a href='index.php' class='px-3 border-0 mt-2 mb-2 text-dark text-decoration-none rounded-top rounded-bottom' style='background-color:#F05941;'>Continue shopping</a>";
 
             }
-
-           
-
             ?>
-
-
           </div>
         </form>
+
+        <!-- ... JS code to manipulate tha cart... -->
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            let totalPrice = document.querySelector(".totalPrice");
+            let totalNav = document.querySelector(".total-nav");
+            let formatted_prices = <?php echo $encoded_prices; ?>;
+            let qtyInputs = document.querySelectorAll('.qty-input');
+            let totalPriceInputs = document.querySelectorAll('.total-price-input');
+
+            qtyInputs.forEach((qtyInput, index) => {
+              qtyInput.addEventListener('input', () => {
+                updateTotal(index);
+                calculateOverallTotal();
+              });
+            });
+
+            function updateTotal(index) {
+              let unitValue = parseFloat(formatted_prices[index]);
+              let qtyValue = parseInt(qtyInputs[index].value) || 0;
+              let total = unitValue * qtyValue;
+              totalPriceInputs[index].value = total.toFixed(2); // Format the total to two decimal places
+            }
+
+            function calculateOverallTotal() {
+              let overallTotal = 0;
+              totalPriceInputs.forEach((totalInput) => {
+                overallTotal += parseFloat(totalInput.value) || 0;
+              });
+
+             
+              totalPrice.innerText = overallTotal.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'NPR', // Change the currency code as needed
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              });
+
+              totalNav.innerText = overallTotal.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'NPR', // Change the currency code as needed
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              });
+
+             
+            }
+          });
+        </script>
+
+
+
+
         <!---function to remove items---->
 
         <?php
@@ -337,6 +402,9 @@ session_start();
 
       </div>
     </div>
+
+
+
 
 
 

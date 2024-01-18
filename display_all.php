@@ -40,6 +40,18 @@ session_start();
     .second-nav-bg {
       background-color: #A9A9A9;
     }
+
+    .nav-link
+    {
+      font-size: 1.2rem;
+      font-family: sans-serif;
+    }
+    .card{
+      transition: 1s;;
+    }
+    .card:hover{
+      box-shadow: 0 8px 16px black;
+    }
   </style>
 
 
@@ -74,7 +86,7 @@ session_start();
           } else {
 
             echo " <li class='nav-item'>
-        <a class='nav-link' href='./users_area/profile.php'>My Account</a>
+        <a class='nav-link text-white' href='./users_area/profile.php'>My Account</a>
       </li>";
 
           }
@@ -87,7 +99,7 @@ session_start();
       </li> -->
 
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Contact</a>
+            <a class="nav-link text-white" href="contact.php">Contact</a>
           </li>
 
           <li class="nav-item">

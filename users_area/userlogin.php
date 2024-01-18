@@ -184,19 +184,15 @@ if (isset($_POST['user_login'])) {
     $row_count = mysqli_num_rows($result);
     $row_data = mysqli_fetch_assoc($result); // This is a PHP function used to fetch a row of data from a MySQL database result set as an associative array
 
-    // cart item
-    $user_ip = getIPAddress();
+ 
 
-    $select_query_cart = "select *from `cart_details` where ip_address='$user_ip'";
-    $result_cart = mysqli_query($conn, $select_query_cart);
-    $row_count_cart = mysqli_num_rows($result_cart);
 
     if ($row_count > 0) {
         $_SESSION['username'] = $user_name; //creating session variable accecing the user name and storing inside the session variable
         if (password_verify($user_password, $row_data['user_password'])) //unshasing the password and verifying
         {
             // echo "<script>alert('Login successfull ".$user_ip ."')</script>";
-            if ($row_count == 1 and $row_count_cart == 0) {
+            if ($row_count == 1 ) {
                 $_SESSION['username'] = $user_name;
                 echo "<script>alert('Login successfull')</script>";
                 echo "<script>window.open('profile.php','_self') </script>";

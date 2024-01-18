@@ -15,15 +15,35 @@ if (isset($_GET['my_array'])) {
 
     }
 }
+
+
+
 if (isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
-    //getting total item and total price of all items
-
-    $get_ip_address = getIPAddress();
     $total_price = 0;
-    $cart_query_price = "select * from cart_details where ip_address='$get_ip_address'";
+
+    global $conn;
+
+
+    //getting email on the basis of user id
+    $select_email_query = "select user_email from user_table where user_id=$user_id limit 1 ";
+    $result_email_query = mysqli_query($conn, $select_email_query);
+    if ($result_email_query) {
+        $user_data = mysqli_fetch_assoc($result_email_query);
+        $user_email = $user_data['user_email'];
+
+    } else {
+        // Handle the case where the query fails
+        echo "Query error: " . mysqli_error($conn);
+    }
+
+
+
+    $cart_query_price = "select * from cart_details where user_email='$user_email'";
     $result_cart_price = mysqli_query($conn, $cart_query_price);
     $count_products = mysqli_num_rows($result_cart_price);
+
+
 
     //generating random number for envoice
 
@@ -49,36 +69,53 @@ if (isset($_GET['user_id'])) {
 }
 
 //getting quantity from cart
-
-$get_cart = "select *from cart_details";
+$get_cart = "SELECT * FROM cart_details";
 $run_cart = mysqli_query($conn, $get_cart);
-$get_item_quantity = mysqli_fetch_array($run_cart);
-$quantity = $get_item_quantity['quantity'];
-if ($quantity == 0) {
-    $quantity = 1;
-    $subtotal = $total_price;
 
+if ($run_cart) {
+    $subtotal = 0; // Initialize subtotal
 
+    while ($get_item_quantity = mysqli_fetch_array($run_cart)) {
+        $quantity = $get_item_quantity['quantity'];
+        
+        if ($quantity == 0) {
+            $quantity = 1;
+        }
+        
+        // Calculate subtotal for each item and accumulate it
+        $subtotal += $total_price * $quantity;
+    }
 } else {
-    $quantity = $quantity;
-    $subtotal = $total_price * $quantity;
+    // Handle the case where the query fails
+    echo "Query error: " . mysqli_error($conn);
 }
+
+
 
 //inserting data to users_table
 
 $insert_orders = "INSERT INTO `user_orders` (`user_id`,`items_name`,`amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`)
-                VALUES ($user_id,'$product_title', $subtotal, $invoice_number, $count_products, NOW(), '$status')";
-
+                VALUES ($user_id,'$product_title', $total_price, $invoice_number, $count_products, NOW(), '$status')";
 
 $result_user_order = mysqli_query($conn, $insert_orders);
+
 if ($result_user_order) {
-    // echo"<script>alert('inserted successfully ". $get_ip_address ."')</script>"; 
     echo "<script>alert('inserted successfully')</script>";
     echo "<script>window.open('profile.php','_self') </script>";
 
+    $delete_cart_query = "DELETE FROM `cart_details` WHERE user_email='$user_email'";
+    $result_cart_delete = mysqli_query($conn, $delete_cart_query);
+
+    if ($result_cart_delete) {
+        echo "<script>alert('deleted successfully')</script>";
+        echo "<script>window.open('profile.php','_self') </script>";
+    } else {
+        echo "<script>alert('Some problem occurred during deletion')</script>";
+    }
 } else {
-    echo "<script>alert('Some problem occured ');</script>";
+    echo "<script>alert('Some problem occurred during insertion')</script>";
 }
+
 
 //inseting to orders pending
 
@@ -87,19 +124,10 @@ $insert_pending_order = "INSERT INTO `orders_pending`( `user_id`, `invoice_numbe
 $result_pending_order = mysqli_query($conn, $insert_pending_order);
 
 
-//once the data is inserted to orders pending table we have to delete the cart
 
 
-$delete_cart_query = "DELETE FROM `cart_details` where ip_address='$get_ip_address'";
-$result_cart_delete = mysqli_query($conn, $delete_cart_query);
-if ($result_user_order) {
-    // echo"<script>alert('inserted successfully ". $subtotal ."')</script>"; 
-    echo "<script>alert('deleted successfully')</script>";
-    echo "<script>window.open('profile.php','_self') </script>";
 
-} else {
-    echo "<script>alert('Some problem occured')</script>";
-}
+
 
 
 ?>

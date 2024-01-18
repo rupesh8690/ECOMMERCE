@@ -76,6 +76,11 @@ if (isset($_GET['my_array'])) {
     padding: 20px;
     width: 100%;
   }
+    .nav-link
+    {
+      font-size: 1.2rem;
+      font-family: sans-serif;
+    }
   </style>
 
 
@@ -179,11 +184,7 @@ if (isset($_GET['my_array'])) {
       </div>
 
     </div>
-<?php
- foreach ($product_ids as $value) {
-  echo $value . '<br>';
-}
- ?>
+
 
 
     <!--Footer-->
