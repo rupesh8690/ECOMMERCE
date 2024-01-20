@@ -69,8 +69,8 @@ include('../includes/connect.php');
     $result = mysqli_query($conn, $user_query);
     $run_query = mysqli_fetch_array($result); //both array and assoc are very similar but using array we can access by index like 1,2 and column name as well
     $user_id = $run_query['user_id'];
-    
- 
+
+
 
 
 
@@ -86,9 +86,9 @@ include('../includes/connect.php');
             <select class="form-select p-2" id="paymentSelect" aria-label="Default select example">
                 <option selected>Select Payment Options</option>
                 <option value="1">Esewa</option>
-                <option value="2">Khalti</option>
-                <option value="3">Offline</option>
-               
+                <option value="2" disabled>Khalti</option>
+                <option value="3">Cash on Devlivery</option>
+
 
             </select>
         </div>
@@ -112,7 +112,8 @@ include('../includes/connect.php');
             // Redirect the user to the appropriate page based on the selected option
             if (selectedOptionValue === '1') {
                 var total_price = <?php echo json_encode($total_price) ?>;
-                window.location.href = '/ecommerce/esewa_api/index.php?total_price= ' + total_price; // Replace with the actual URL
+                var user_id=<?php echo json_encode($user_id) ?>;
+                window.location.href = '/ecommerce/esewa_api/index.php?total_price=' + total_price + '&user_id=' + user_id + '&' + '<?php echo $encoded_array; ?>';// Replace with the actual URL
             } else if (selectedOptionValue === '2') {
                 window.location.href = 'khalti-page.php'; // Replace with the actual URL
             } else if (selectedOptionValue === '3') {

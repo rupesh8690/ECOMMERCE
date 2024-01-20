@@ -53,10 +53,11 @@ include('../includes/connect.php');
       <th scope='col'>User Id</th>
       <th scope='col'>Items name</th>
       <th scope='col'>Due Amount</th>
-      <th scope='col'>Invoice Number</th>
+  
       <th scope='col'>Total Products</th>
       <th scope='col'>Order Date</th>
-      <th scope='col'>Status</th>
+      <th scope='col'>Payment Method</th>
+ 
       <th scope='col'>Delete</th>
    
     </tr>
@@ -70,10 +71,10 @@ include('../includes/connect.php');
             $user_id=$data['user_id'];
             $amount_due = $data['amount_due'];
             $product_title=$data['items_name'];
-            $invoice_number = $data['invoice_number'];
+       
             $total_products = $data['total_products'];
             $order_date = $data['order_date'];
-            $order_status = $data['order_status'];
+            $payment_mode = $data['payment_mode'];
 
 
             echo "   <tr>
@@ -81,10 +82,9 @@ include('../includes/connect.php');
     <td>$user_id</td>
     <td>$product_title</td>
     <td> $amount_due</td>
-    <td>$invoice_number</td>
     <td>$total_products</td>
     <td>$order_date</td>
-    <td>$order_status</td>
+    <td>$payment_mode</td>
     <td><a href='index.php?delete_order=$order_id' class='text-dark' data-toggle='modal' data-target='#exampleModal'> <i class='fa-solid fa-trash-can'> </i> </a></td>
   </tr>";
 

@@ -45,10 +45,9 @@ if (isset($_GET['user_id'])) {
 
 
 
-    //generating random number for envoice
+    
 
-    $invoice_number = mt_rand();
-    $status = "Pending";
+   
     while ($row_price = mysqli_fetch_array($result_cart_price)) {
         $product_id = $row_price['product_id'];
         $select_products = "select * from products where product_id=$product_id";
@@ -68,34 +67,15 @@ if (isset($_GET['user_id'])) {
 
 }
 
-//getting quantity from cart
-$get_cart = "SELECT * FROM cart_details";
-$run_cart = mysqli_query($conn, $get_cart);
 
-if ($run_cart) {
-    $subtotal = 0; // Initialize subtotal
-
-    while ($get_item_quantity = mysqli_fetch_array($run_cart)) {
-        $quantity = $get_item_quantity['quantity'];
-        
-        if ($quantity == 0) {
-            $quantity = 1;
-        }
-        
-        // Calculate subtotal for each item and accumulate it
-        $subtotal += $total_price * $quantity;
-    }
-} else {
-    // Handle the case where the query fails
-    echo "Query error: " . mysqli_error($conn);
-}
 
 
 
 //inserting data to users_table
-
-$insert_orders = "INSERT INTO `user_orders` (`user_id`,`items_name`,`amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`)
-                VALUES ($user_id,'$product_title', $total_price, $invoice_number, $count_products, NOW(), '$status')";
+$payment_mode="Cash on Delivery";
+$order_id="COD" . uniqid();//uniqid function to generate a unique identifier and concatenate with MS
+$insert_orders = "INSERT INTO `user_orders` (`order_id`,`user_id`,`items_name`,`amount_due`, `total_products`, `order_date`,`payment_mode`)
+                VALUES ('$order_id',$user_id,'$product_title', $total_price,  $count_products, NOW(),'$payment_mode')";
 
 $result_user_order = mysqli_query($conn, $insert_orders);
 
@@ -115,19 +95,5 @@ if ($result_user_order) {
 } else {
     echo "<script>alert('Some problem occurred during insertion')</script>";
 }
-
-
-//inseting to orders pending
-
-$insert_pending_order = "INSERT INTO `orders_pending`( `user_id`, `invoice_number`, `product_id`, `quantity`, `order_status`) 
-             values('$user_id','$invoice_number','$product_id','$quantity','$status')";
-$result_pending_order = mysqli_query($conn, $insert_pending_order);
-
-
-
-
-
-
-
 
 ?>

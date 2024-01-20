@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+session_start();
 
 include('../includes/connect.php');
 if ($_POST['insert_product']) {
@@ -49,12 +50,14 @@ if ($_POST['insert_product']) {
 
     $result_query = mysqli_query($conn, $insert_product);
     if ($result_query) {
+        $_SESSION['response'] = "Inserted the products successfully";
 
-        header('Location: insert_product.php?msg=success');
+        // header('Location: insert_product.php?msg=success');
 
 
     } else {
-        header('Location: insert_product.php?msg=error');
+        $_SESSION['response'] = "Failed to insert the products ";
+        // header('Location: insert_product.php?msg=error');
         // echo "<script> alert('problem occureed')</script>";
 
     }
@@ -110,6 +113,23 @@ if ($_POST['insert_product']) {
 
     <div class="container cont-bg ">
         <h1 class="text-center mt-3">Insert Products</h1>
+
+        <?php
+        if (isset($_SESSION['response'])) {
+            ?>
+        <div class="alert alert-success">
+            <h5>
+                <?= $_SESSION['response']; ?>
+            </h5>
+        </div>
+
+
+
+        <?php
+        unset($_SESSION['response']);
+        }
+
+        ?>
         <!--form-->
         <form action="" method="post" enctype="multipart/form-data">
 

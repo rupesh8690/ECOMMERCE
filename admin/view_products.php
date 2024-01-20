@@ -52,13 +52,13 @@ include('../includes/connect.php');
 
     if ($num_of_rows > 0) {
       echo " <thead class='text-white' style='background-color:#F05941;'>
-    <tr>
+    <tr class='text-center'>
       <th scope='col'>Product ID</th>
       <th scope='col'>Product Title</th>
       <th scope='col'>Product Image</th>
       <th scope='col'>Product Price</th>
-      <th scope='col'>Total Sold</th>
-      <th scope='col'>Status</th>
+
+   
       <th scope='col'>Edit</th>
       <th scope='col'>Delete</th>
     </tr>
@@ -85,16 +85,8 @@ include('../includes/connect.php');
       <td>
         <?php echo $product_price ?>
       </td>
-      <td>
-        <?php
-        $select_sold = "select * from orders_pending where product_id=$product_id";
-        $data = mysqli_query($conn, $select_sold);
-        $rows_count = mysqli_num_rows($data);
-        echo $rows_count;
-
-        ?>
-      </td>
-      <td>true</td>
+     
+      
       <td><a href='index.php?edit_products=<?php echo $product_id ?> ' class='text-dark'><i
             class='fa-solid fa-pen-to-square'></i></a></td>
       <td>

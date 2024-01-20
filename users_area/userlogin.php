@@ -195,7 +195,8 @@ if (isset($_POST['user_login'])) {
             if ($row_count == 1 ) {
                 $_SESSION['username'] = $user_name;
                 echo "<script>alert('Login successfull')</script>";
-                echo "<script>window.open('profile.php','_self') </script>";
+                echo "<script>window.open('../cart.php','_self') </script>";
+                   
 
 
             } else {

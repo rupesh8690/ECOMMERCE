@@ -35,11 +35,9 @@
       //selecting data from user_orders on the basis of userid
       
       $select_user_orders = "SELECT * FROM `user_orders` where user_id=$user_id";
-      $result_order = mysqli_query($conn, $select_user_orders);
+      $result_order = mysqli_query($conn, $select_user_orders); ?>
 
-      //   if(mysqli_num_rows($result_order)>0)
-      //  {
-      echo "  <thead class='custom-color '>
+    <thead class='custom-color '>
    <tr>
      <th scope='col' class='text-white'>SI no</th>
      <th scope='col' class='text-white'>Amount Due</th>
@@ -47,13 +45,16 @@
      <th scope='col' class='text-white'>Total Products</th>
    
      <th scope='col' class='text-white'>Date</th>
-     <th scope='col' class='text-white'>Complete/Incomplete</th>
-     <th scope='col' class='text-white'>Status</th>
+     <th scope='col' class='text-white'>Payment Mode</th>
+
+     <!-- <th scope='col' class='text-white'>Complete/Incomplete</th>
+     <th scope='col' class='text-white'>Status</th> -->
      
    </tr>
  </thead>
- <tbody>";
-      // }
+ <tbody>  <?php 
+    
+      
       $si = 1;
 
       while ($row_data = mysqli_fetch_array($result_order)) {
@@ -62,14 +63,15 @@
         $items_name=$row_data['items_name'];
         $total_products = $row_data['total_products'];
         $order_date = $row_data['order_date'];
-        $status = $row_data['order_status'];
+        // $status = $row_data['order_status'];
         $order_id = $row_data['order_id'];
+        $payment_mode = $row_data['payment_mode'];
 
-        if ($status == "Pending") {
-          $status = "Incomplete";
-        } else {
-          $status = "Complete";
-        }
+        // if ($status == "Pending") {
+        //   $status = "Incomplete";
+        // } else {
+        //   $status = "Complete";
+        // }
 
 
 
@@ -80,16 +82,17 @@
     <td> $items_name </td>
     <td> $total_products </td>
     <td> $order_date </td>
-    <td> $status </td> ";
+    <td> $payment_mode </td> 
+   ";
         ?>
 
       <?php
-      if ($status == 'Complete') {
-        echo "<td>Paid</td>";
-      } else {
-        echo "  <td> <a href='confirm_payment.php?order_id= $order_id' class='text-dark'>Confirm </a></td>
-      </tr> ";
-      }
+      // if ($status == 'Complete') {
+      //   echo "<td>Paid</td>";
+      // } else {
+      //   echo "  <td> <a href='confirm_payment.php?order_id= $order_id' class='text-dark'>Confirm </a></td>
+      // </tr> ";
+      // }
 
       ?>
 

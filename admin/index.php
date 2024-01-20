@@ -32,28 +32,33 @@ session_start();
 
     a:hover {
       background-color: #2980b9;
-      color: #ffffff;
+      color: #F05941;
       padding: 10px;
 
     }
 
-    .footer {
-      position: relative;
-      bottom: 0;
-      right: 0;
-
-
-    }
 
     body {
       overflow-x: hidden;
 
     }
 
+
     .custom-color {
       background-color: #F05941;
 
     }
+
+    .nav-link {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .footer{
+      margin-top: 27rem;
+    }
+
+ 
+
   </style>
 </head>
 
@@ -100,15 +105,13 @@ session_start();
     <!--creating navbr--->
 
     <?php
- if (!isset($_SESSION['admin_name']))
- {
+    if (!isset($_SESSION['admin_name'])) {
 
-  // echo 'login first';
-  echo "<a href='admin_login.php'><button type='button' class='btn btn-primary'  style='background-color: #F05941; color: #ffffff'>Click here to login</button></a>";
+      // echo 'login first';
+      echo "<a href='admin_login.php'><button type='button' class='btn btn-primary'  style='background-color: #F05941; color: #ffffff'>Click here to login</button></a>";
 
- }
-else{
-?>
+    } else {
+      ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <img src="../image/logo.png" alt="" class="logo">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -140,9 +143,7 @@ else{
           <li class="nav-item">
             <a class="nav-link text-dark" href="index.php?all_order">All orders</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="index.php?all_payment">All Payments</a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link text-dark" href="index.php?list_users">List Users</a>
           </li>
@@ -158,94 +159,90 @@ else{
         </ul>
 
       </div>
-    </nav> <?php  } ?>
+    </nav>
+    <?php } ?>
     <!--navbar ended--->
 
 
 
 
     <!---fourth child ----->
-    <div class="container vh-100 ">
-      <?php
+    <div class="content">
+      <div class="container  ">
+        <?php
 
-      if (isset($_GET['insert_category'])) {
-        include('insert_categories.php');
-      }
+        if (isset($_GET['insert_category'])) {
+          include('insert_categories.php');
+        }
 
-      if (isset($_GET['insert_brands'])) {
-        include('insert_brands.php');
-      }
+        if (isset($_GET['insert_brands'])) {
+          include('insert_brands.php');
+        }
 
-      if (isset($_GET['view_products'])) {
-        include('view_products.php');
-      }
+        if (isset($_GET['view_products'])) {
+          include('view_products.php');
+        }
 
-      if (isset($_GET['edit_products'])) {
-        include('edit_products.php');
-      }
-      if (isset($_GET['view_category'])) {
-        include('view_categories.php');
-      }
+        if (isset($_GET['edit_products'])) {
+          include('edit_products.php');
+        }
+        if (isset($_GET['view_category'])) {
+          include('view_categories.php');
+        }
 
-      if (isset($_GET['view_brands'])) {
-        include('view_brands.php');
-      }
+        if (isset($_GET['view_brands'])) {
+          include('view_brands.php');
+        }
 
-      if (isset($_GET['edit_category'])) {
-        include('edit_category.php');
-      }
+        if (isset($_GET['edit_category'])) {
+          include('edit_category.php');
+        }
 
-      if (isset($_GET['edit_brands'])) {
-        include('edit_brands.php');
-      }
+        if (isset($_GET['edit_brands'])) {
+          include('edit_brands.php');
+        }
 
-      if (isset($_GET['delete_brands'])) {
-        include('delete_brand.php');
-      }
+        if (isset($_GET['delete_brands'])) {
+          include('delete_brand.php');
+        }
 
-      if (isset($_GET['delete_category'])) {
-        include('delete_category.php');
-      }
+        if (isset($_GET['delete_category'])) {
+          include('delete_category.php');
+        }
 
 
-      if (isset($_GET['all_order'])) {
-        include('all_order.php');
-      }
-      if (isset($_GET['delete_order'])) {
-        include('delete_order.php');
-      }
+        if (isset($_GET['all_order'])) {
+          include('all_order.php');
+        }
+        if (isset($_GET['delete_order'])) {
+          include('delete_order.php');
+        }
 
-      if (isset($_GET['all_payment'])) {
-        include('all_payment.php');
-      }
 
-      if (isset($_GET['delete_payment'])) {
-        include('delete_payment.php');
-      }
-      if (isset($_GET['list_users'])) {
-        include('list_users.php');
-      }
+        if (isset($_GET['delete_payment'])) {
+          include('delete_payment.php');
+        }
+        if (isset($_GET['list_users'])) {
+          include('list_users.php');
+        }
 
-      ?>
+        ?>
 
 
 
+      </div>
     </div>
 
 
-    <!--including footer-->
-
-    <?php
-
-    include('../includes/footer.php');
-    ?>
-    <!-- <div class=" p-3 text-center footer w-100 ">
-    <p>All rights are reserved © Designed and developed by Rupesh Thakur</p>
-</div> -->
 
 
 
   </div>
+
+  <?php
+
+include('../includes/footer.php');
+?>
 
 
 

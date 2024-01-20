@@ -274,8 +274,8 @@ if (isset($_POST['edit_product'])) {
             </div>
 
             <div class="form-group mb-3 ">
-                <input type="submit" value="Edit" name="edit_product"
-                    class="bg-info border-0 px-5 py-3 text-white rounded ">
+                <input type="submit" value="Update Products" name="edit_product"
+                    class=" border-0 px-5 py-3 text-white rounded " style=" background-color: #F05941;">
             </div>
 
 
