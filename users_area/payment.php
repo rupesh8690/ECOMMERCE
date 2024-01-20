@@ -113,7 +113,7 @@ include('../includes/connect.php');
             if (selectedOptionValue === '1') {
                 var total_price = <?php echo json_encode($total_price) ?>;
                 var user_id=<?php echo json_encode($user_id) ?>;
-                window.location.href = '/ecommerce/esewa_api/index.php?total_price=' + total_price + '&user_id=' + user_id + '&' + '<?php echo $encoded_array; ?>';// Replace with the actual URL
+                window.location.href = '../esewa_api/index.php?total_price=' + total_price + '&user_id=' + user_id + '&' + '<?php echo $encoded_array; ?>';// Replace with the actual URL
             } else if (selectedOptionValue === '2') {
                 window.location.href = 'khalti-page.php'; // Replace with the actual URL
             } else if (selectedOptionValue === '3') {
