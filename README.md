@@ -26,4 +26,4 @@ Welcome to the E-Commerce Website project! This web application is designed to p
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/e-commerce-website.git
+   git clone https://github.com/rupesh8690/ECOMMERCE.git
