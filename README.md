@@ -45,7 +45,7 @@ Click Start next to both Apache and MySQL.
 Open phpMyAdmin by navigating to http://localhost/phpmyadmin/ in your web browser.
 In phpMyAdmin, click on Databases and create a new database with name mystore and then import the mystore.db file there
 
-**Step 7: Access the Website**
+**Step 5: Access the Website**
 Open your web browser and navigate to http://localhost/ecommerce or http://localhost:8080/ecommerce/ECOMMERCE (if you're running Apache on port 8080).
 You should now see the E-Commerce website running locally on your machine.
 
