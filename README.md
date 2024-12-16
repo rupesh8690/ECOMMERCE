@@ -27,6 +27,7 @@ Welcome to the E-Commerce Website project! This web application is designed to p
 **step 1. Clone the repository:**
    `
    git clone https://github.com/rupesh8690/ECOMMERCE.git
+   
 **Step 2: Place the Project in the XAMPP htdocs Directory**
 Navigate to the folder where you installed XAMPP (e.g., C:\xampp).
 Inside the XAMPP installation folder, locate and open the htdocs folder (this is the root directory for your web projects).
