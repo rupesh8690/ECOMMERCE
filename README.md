@@ -24,6 +24,28 @@ Welcome to the E-Commerce Website project! This web application is designed to p
 
 ## Setup Instructions
 
-1. Clone the repository:
-   ```bash
+**step 1. Clone the repository:**
+   `
    git clone https://github.com/rupesh8690/ECOMMERCE.git
+**Step 2: Place the Project in the XAMPP htdocs Directory**
+Navigate to the folder where you installed XAMPP (e.g., C:\xampp).
+Inside the XAMPP installation folder, locate and open the htdocs folder (this is the root directory for your web projects).
+Copy the cloned ECOMMERCE project folder into the htdocs directory.
+The path should look something like this:
+C:\xampp\htdocs\ecommerce
+
+
+**Step 3: Start XAMPP Services**
+Open the XAMPP Control Panel.
+
+Start the Apache server (for the web server) and MySQL server (for the database).
+
+Click Start next to both Apache and MySQL.
+**Step 4: import the database provided named mystore.db**
+Open phpMyAdmin by navigating to http://localhost/phpmyadmin/ in your web browser.
+In phpMyAdmin, click on Databases and create a new database with name mystore and then import the mystore.db file there
+
+**Step 7: Access the Website**
+Open your web browser and navigate to http://localhost/ecommerce or http://localhost:8080/ecommerce/ECOMMERCE (if you're running Apache on port 8080).
+You should now see the E-Commerce website running locally on your machine.
+
